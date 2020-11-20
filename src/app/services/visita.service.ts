@@ -10,14 +10,12 @@ export class VisitaService {
 
   constructor(private http: HttpClient) { }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   createVisita(data) {
-    return this.http.post<any>(this.URL + '/create/' + localStorage.getItem('token'), data)
+    return this.http.post<any>(this.URL + '/create?token=' + localStorage.getItem('token'), data)
   }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   getAllVisitas() {
-    return this.http.get<any>(this.URL + '/' + localStorage.getItem('token'))
+    return this.http.get<any>(this.URL + '/?token=' + localStorage.getItem('token'))
   }
 
   getVisitaById(id) {

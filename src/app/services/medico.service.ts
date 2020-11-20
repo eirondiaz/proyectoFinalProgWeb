@@ -10,13 +10,11 @@ export class MedicoService {
 
   constructor(private http: HttpClient) { }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   updatePassword(data) {
-    return this.http.put<any>(this.URL + '/updatePassword/' + localStorage.getItem('token'), data)
+    return this.http.put<any>(this.URL + '/updatePassword?token=' + localStorage.getItem('token'), data)
   }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   updateEmailName(data) {
-    return this.http.put<any>(this.URL + '/updateEmailName/' + localStorage.getItem('token'), data)
+    return this.http.put<any>(this.URL + '/updateEmailName?token=' + localStorage.getItem('token'), data)
   }
 }

@@ -10,14 +10,12 @@ export class PacienteService {
 
   constructor(private http: HttpClient) { }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   createPatient(data) {
-    return this.http.post<any>(this.URL + '/create', data)
+    return this.http.post<any>(this.URL + '/create?token=' + localStorage.getItem('token'), data)
   }
 
-  //arreglarla en el api con respeto al token (mandarlo por la URL) EIRON DEBE HACERLO
   getAllPatients() {
-    return this.http.get<any>(this.URL + '/patients/' + localStorage.getItem('token'))
+    return this.http.get<any>(this.URL + '/patients?token=' + localStorage.getItem('token'))
   }
 
   getPatientById(id) {
