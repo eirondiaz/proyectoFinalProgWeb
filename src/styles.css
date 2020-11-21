@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap');
+
+
+:root{
+     --color-primario: #004B93;
+     --color-secundario: #9599A8;
+     --color-terciario: #7796BD;
+
+     --color-primario-dark: #222942;
+     --color-hover: #108EEC;
+     
+}
+
+body{
+     font-family: 'Inter', sans-serif;
+}
+
+
+.fixed-size{
+     height: 100vh;
+     width: 100%;
+     max-width: 100%;
+     max-height: 100vh;
+}
+
+.fixed-size-input{
+     max-width: 300px;
+}
+
+
+
+/* ---Estilos para los componentes ----*/
+
+.input-style{
+     border: 1px solid #EBF0FF ;
+     text-indent: 4px;
+     background-color:#F9FAFF ;
+}
+
+.btn-primario{
+     background-color: var(--color-primario);
+     color: #ffffff;
+}
+
+.selected-box-border{
+     border: 2px solid var(--color-primario);
+}
+
+.not-selected-box-border{
+     border: 2px solid #EBF0FF ;
+}
+
+
+/* -----colores de texto----*/
+
+.text-primario {
+     color: var(--color-primario);
+}
+
+
+.text-secundario {
+     color: var(--color-secundario);
+}
+
+
+.text-terciario {
+     color: var(--color-terciario);
+}
