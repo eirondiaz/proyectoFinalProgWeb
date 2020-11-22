@@ -67,3 +67,7 @@ body{
 .text-terciario {
      color: var(--color-terciario);
 }
+
+.text-purple{
+     color: #ABB5DE;
+}

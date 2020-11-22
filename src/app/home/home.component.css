@@ -79,10 +79,11 @@ ul li a {
     font-size: 12px;
 }
 
- 
-
-
 
 .actividades-recientes{
     background-color: #f7fdff;
+}
+
+.btn-busqueda{
+   background-color: var(--color-primario);
 }
