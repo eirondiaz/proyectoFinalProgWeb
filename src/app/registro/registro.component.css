@@ -1,0 +1,59 @@
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+label{
+    text-transform: uppercase;
+    color: #c9cedf;
+    font-size:16px;
+}
+
+
+.left-side-registro{
+    background-color: #E0E7FF;
+}
+
+.container-options{
+    border-radius: 10px;
+    padding: 14px;
+}
+
+
+.fixed-box-size{
+    max-width: 300px;
+}
+
+.fixed-box-heigh{
+    max-height: 170px ;
+}
+
+.box-text{
+    font-size: 14px;
+}
+
+.check-icon{
+  padding: 6px;
+  background-color: var(--color-primario);
+  color: #fff;
+  font-size: 8px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.check-icon-position{
+    position: absolute;
+    top: -8px;
+    right: 6px;
+}
+
+.icon-style-primario{
+    background-color: #dfe6ff;
+    padding: 16px;
+    border-radius: 50%;
+}
+
+
+
+

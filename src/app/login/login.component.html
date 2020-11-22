@@ -10,7 +10,7 @@
          <div class="col-12 col-md-6 right-side-login">
              <div class="d-flex flex-column justify-content-center align-items-center fixed-size bg-white">
                     <div>
-                        <h2>Crear una cuenta</h2>
+                        <h2>Entrar a tu cuenta</h2>
                         <p>Login require el correo y la contraseña</p>
                     </div>
                     <div class="w-75 fixed-box-size">
@@ -23,18 +23,18 @@
     
                                         <div class="mt-2">
                                             <b>Entrar</b>
-                                            <p class="box-text">Asegura tu cuenta.</p>
+                                            <p class="box-text">Aceder a tu cuenta.</p>
                                         </div>
                                     </div>
                                    </div>
                             </div>
                             <div class="col-6 position-relative">
-                                <div class="container-options text-center not-selected-box-border">
+                                <div class="container-options text-center not-selected-box-border" routerLink="/registro">
                                     <div>
                                         <i class="fas fa-user-plus icon-style-primario"></i>
     
                                         <div class="mt-2">
-                                            <b>Registrar</b>
+                                            <b>Cuenta</b>
                                             <p class="box-text">Empieza hoy mismo.</p>
                                         </div>
                                     </div>
@@ -52,19 +52,20 @@
                               </div>                            
                             </div>
                         <div class="form-group my-3">
-                            <div class="d-flex justify-content-around">
+                            <!--<div class="d-flex justify-content-around">
                                 <label for="">Contraseña</label>
-                                <a class="text-primario">Olvide la contraseña?</a>                               
-                            </div>
+                               <a class="text-primario">Olvide la contraseña?</a>                      
+                            </div>-->
+                            <label for="">Contraseña</label>
                             <input formControlName="password" type="password" placeholder="Introdusca su contraseña" class="form-control input-style">
                             <div *ngIf="password.invalid && (password.dirty || password.touched) && valid"> 
                                 <span class="text-danger">La contraseña es requerida</span>
                             </div>
                         </div>
                         <div class="my-3">
-                            <button (click)="logIn()" type="submit" class="btn p-2 btn-primario text-white w-100">Log in</button>
+                            <button (click)="logIn()" type="submit" class="btn p-2 btn-primario text-white w-100">Entra a mi cuenta</button>
                             <div class="my-3">
-                               <p> No tengo una cuenta? <span class="text-primario">Registrar me</span></p>
+                               <p> No tengo una cuenta? <a routerLink="/registro" class="text-primario">Crear cuenta</a></p>
                             </div> 
                         </div>
                     </form>

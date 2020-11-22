@@ -1,1 +1,81 @@
-<p>registro works!</p>
+<div class="container-fluid p-0 m-0 fixed-size" >
+    <div class="row p-0 m-0">
+         <div class="col-md-6 d-none d-md-block left-side-registro">
+                <div class="d-flex justify-content-center align-items-center fixed-size">
+                    <div>
+                        <img src="/assets/img/doctor_img_login.png" alt="Doctor"   class="">
+                    </div>
+                </div>
+         </div>
+         <div class="col-12 col-md-6 right-side-login py-3">
+             <div class="d-flex flex-column justify-content-center align-items-center fixed-size bg-white">
+                    <div>
+                        <h2>Crear una cuenta</h2>
+                        <p>Crea tu cuenta en menos de 1 minuto.</p>
+                    </div>
+                    <div class="w-75 fixed-box-size">
+                        <div class="row">
+                            <div class="col-6 position-relative">
+                                <div class="container-options text-center not-selected-box-border" routerLink="/">
+                                    
+                                    <div>
+                                        <i class="fas fa-sign-in-alt icon-style-primario"></i>
+    
+                                        <div class="mt-2">
+                                            <b>Entrar</b>
+                                            <p class="box-text">Aceder a tu cuenta</p>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+                            <div class="col-6 position-relative">
+                                <i class="fas fa-check check-icon-position  check-icon"></i>
+                                <div class="container-options text-center selected-box-border">
+                                    <div>
+                                        <i class="fas fa-user-plus icon-style-primario"></i>
+    
+                                        <div class="mt-2">
+                                            <b>Cuenta</b>
+                                            <p class="box-text">Empieza hoy mismo.</p>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="myForm" class="w-75 fixed-size-input">
+                        <div class="form-group my-2">
+                            <label for="">Nombre</label>
+                            <input formControlName="nombre" type="text" placeholder="Escriba su nombre." class="form-control input-style">                        
+                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched) && valid"> 
+                               <span class="text-danger" *ngIf="nombre.errors.required">*El nombre es obligatorio*</span>
+                             </div>                            
+                           </div>
+                        <div class="form-group my-2">
+                             <label for="">Correo</label>
+                             <input formControlName="correo" type="email" placeholder="tu@ejemplo.com" class="form-control input-style">                        
+                             <div *ngIf="correo.invalid && (correo.dirty || correo.touched) && valid"> 
+                                <span class="text-danger" *ngIf="correo.errors.required">El correo es obligatorio*</span>
+                                <span class="text-danger" *ngIf="correo.errors.email">Introduzca un correo valido*</span>
+                              </div>                            
+                            </div>
+                        <div class="form-group my-2">
+                            <label for="">Contraseña</label>                          
+                            <input formControlName="password" type="password" placeholder="Introdusca su contraseña" class="form-control input-style">
+                            <div *ngIf="clave.invalid && (clave.dirty || clave.touched) && valid"> 
+                                <span class="text-danger" *ngIf="clave.errors.required">Contraseña es obligatorio*</span>
+                                <span class="text-danger" *ngIf="clave.errors.minlength">El limite de 8 caracteres*</span>
+                            </div>
+                        </div>
+                        <div class="my-4">
+                            <button (click)="register()" type="submit" class="btn p-2 btn-primario text-white w-100">Nueva cuenta</button>
+                            <div class="my-3">
+                               <p> Ya tengo cuenta? <a routerLink="/" class="text-primario">Entrar a mi cuenta</a></p>
+                            </div> 
+                        </div>
+                    </form>
+             </div>
+         </div>
+    </div>
+</div>
+

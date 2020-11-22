@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 
   myForm: FormGroup = this._builder.group({
     correo: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.required]
+    clave: ['', Validators.required]
   })
 
   valid:boolean
@@ -27,6 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   get correo () {return this.myForm.get('correo')}
-  get password () {return this.myForm.get('password')}
+  get clave () {return this.myForm.get('clave')}
 
 }
