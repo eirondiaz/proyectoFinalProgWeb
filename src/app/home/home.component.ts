@@ -34,8 +34,7 @@ import { Component, OnInit } from '@angular/core';
         setTimeout(() => {
           menu.classList.add('d-none');
           icon.classList.remove('d-none');
-        }, 430);
-         
- 
+        }, 500);
   }
+ 
 }
