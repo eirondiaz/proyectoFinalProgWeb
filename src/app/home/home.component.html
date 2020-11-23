@@ -1,6 +1,6 @@
  <div class="containert-fluid p-0 m-0">
-    <div class="d-flex flex-column flex-md-row  container-box ">
-        <section class="menu-container d-none d-none d-md-block" id="menu-container">
+    <div class="d-flex flex-row  container-box ">
+        <section class="menu-container d-none d-md-block" id="menu-container">
                 <div class="menu-close px-4 mt-3">
                     <i class="fas fa-stream"></i>
                 </div>
@@ -50,12 +50,12 @@
         </section>
         <section class="flex-md-grow-1 main-content px-3">    
             <div class="position-relative">
-                <div>
+                <div class="p-4">
                     <router-outlet></router-outlet>
                 </div>
             </div>     
         </section>
-        <section>
+        <!--<section class="d-none">
         <div class="d-flex align-items-center fixed-size">
             <div style="width: 60px;" class="position-relative">
                 <div *ngIf="!isFiltroOpen" (click)="OpenFiltro()" class="filtro-btn position-absolute animate__animated animate__headShake animate__slow animate__infinite infinite">
@@ -88,6 +88,6 @@
                 </div>
            </div>  
         </div>
-        </section>
+        </section>-->
     </div>
 </div>
