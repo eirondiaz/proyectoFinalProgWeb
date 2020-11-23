@@ -6,34 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
  export class HomeComponent implements OnInit {
+  isFiltroOpen:boolean = false; 
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  OpenMenu(){
-    let menu = document.getElementById('menu-container');
-    let icon = document.getElementById('close-menu-icon')
+  OpenFiltro(){
+    let filtro = document.getElementById('filtro-container');
 
-    if(menu.classList.contains('d-none') || menu.classList.contains('animate__slideOutLeft'))
-        menu.classList.remove('d-none');
-        menu.classList.remove('animate__slideOutLeft');
-        icon.classList.add('d-none');
-        menu.classList.add('animate__slideInLeft');
-    
+    if(filtro.classList.contains('d-none') || filtro.classList.contains('animate__slideOutLeft'))
+        filtro.classList.remove('d-none');
+        filtro.classList.remove('animate__slideOutRight');
+        filtro.classList.add('animate__slideInRight');
+        this.isFiltroOpen = true; 
   }
 
-  CloseMenu(){
-    let menu = document.getElementById('menu-container');
-    let icon = document.getElementById('close-menu-icon');
+  CloseFiltro(){
+    let filtro = document.getElementById('filtro-container');
 
-    if(!menu.classList.contains('d-none') || menu.classList.contains('animate__slideIntLeft'))
-        menu.classList.remove('animate__slideInLeft');
-        menu.classList.add('animate__slideOutLeft');
+    if(!filtro.classList.contains('d-none') || filtro.classList.contains('animate__slideIntRight'))
+        filtro.classList.remove('animate__slideInRight');
+        filtro.classList.add('animate__slideOutRight');
+        this.isFiltroOpen = false ;
         setTimeout(() => {
-          menu.classList.add('d-none');
-          icon.classList.remove('d-none');
+          filtro.classList.add('d-none');
         }, 500);
   }
  

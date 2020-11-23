@@ -1,8 +1,8 @@
- <div class="container-fluid p-0 m-0">
+ <div class="containert-fluid p-0 m-0">
     <div class="d-flex flex-column flex-md-row  container-box ">
-        <section class="menu-container animate__animated d-none " id="menu-container">
+        <section class="menu-container d-none d-none d-md-block" id="menu-container">
                 <div class="menu-close px-4 mt-3">
-                    <i class="fas fa-stream" (click)="CloseMenu()"></i>
+                    <i class="fas fa-stream"></i>
                 </div>
                <div class="menu-box">
                 <div class="avatar-perfil text-center p-3 mt-4">
@@ -49,32 +49,45 @@
                </div>
         </section>
         <section class="flex-md-grow-1 main-content px-3">    
-            <div class="menu-open px-4 mt-2" id="close-menu-icon">
-                <i class="fas fa-stream" (click)="OpenMenu()"></i>
-            </div>        
+            <div class="position-relative">
+                <div>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>     
         </section>
-        <section class="d-none d-lg-block actividades-recientes border-left p-5">
-             <h4 class="text-purple text-uppercase" style="font-weight: 700; max-width: 220px;">Filtro de busqueda</h4>
+        <section>
+        <div class="d-flex align-items-center fixed-size">
+            <div style="width: 60px;" class="position-relative">
+                <div *ngIf="!isFiltroOpen" (click)="OpenFiltro()" class="filtro-btn position-absolute animate__animated animate__headShake animate__slow animate__infinite infinite">
+                    <i class="fas fa-angle-left" id="filtro-icon"></i>
+                </div>
+                <div *ngIf="isFiltroOpen" (click)="CloseFiltro()" class="filtro-btn position-absolute animate__animated animate__headShake animate__slow animate__infinite infinite">
+                    <i class="fas fa-angle-right" id="filtro-icon"></i>
+                </div>
+            </div>
 
-             <div class="my-4 card p-3">
-                 <form>
-                    <label>Fecha</label>
-                    <div class="form-group">
-                        <input type="date">
-                    </div>
-                    <label>Filtrado por: </label>
-                    <div class="form-group">
-                        <input type="checkbox" value=""> <span class="ml-2">Signo zodiacal</span> <br>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" value=""> <span class="ml-2">Cantidad de vicitas</span> <br>
-                    </div>
-                    <div>
-                        <button class="btn btn-busqueda text-center text-white w-100">Buscar</button>
-                    </div>
-
-                 </form>
-             </div>
-        </section>  
+            <div class="animate__animated mr-4 d-none" id="filtro-container"> 
+                <div class="my-4 card p-3">
+                    <form>
+                       <label>Fecha</label>
+                       <div class="form-group">
+                           <input type="date">
+                       </div>
+                       <label>Filtrado por: </label>
+                       <div class="form-group">
+                           <input type="checkbox" value=""> <span class="ml-2">Signo zodiacal</span> <br>
+                       </div>
+                       <div class="form-group">
+                           <input type="checkbox" value=""> <span class="ml-2">Cantidad de vicitas</span> <br>
+                       </div>
+                       <div>
+                           <button class="btn btn-busqueda text-center text-white w-100">Buscar</button>
+                       </div>
+   
+                    </form>
+                </div>
+           </div>  
+        </div>
+        </section>
     </div>
 </div>

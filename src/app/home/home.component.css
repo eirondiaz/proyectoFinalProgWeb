@@ -3,6 +3,7 @@
     width: 100vw;
     max-width: 100%;
     max-height:100vh ;
+    overflow: hidden;
 }
 
 
@@ -89,12 +90,23 @@
     margin-top: 4px;
 }
 
-
-.actividades-recientes{
-    background-color: #fdfeff;
-}
+ 
 
 .btn-busqueda{
    background-color: var(--color-primario);
 }
  
+
+.filtro-btn{
+     font-size: 20px;
+     width:40px ;
+     text-align: center;
+     color: var(--color-primario);
+     border-radius: 5px;
+     top: 50%;
+     left: 0;
+}
+
+.filtro-btn:hover{
+    cursor: pointer;
+}
