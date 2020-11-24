@@ -4,6 +4,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import { HomeComponent } from './home/home.component';
 import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
 import { LoginComponent } from './login/login.component';
+import { PasswordConfigComponent } from './password-config/password-config.component';
 import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
 import { RegistroComponent } from './registro/registro.component';
 
@@ -13,7 +14,9 @@ const routes: Routes = [{path: '', component: LoginComponent},
                         children: [
                           {path: '', component: ListadoPacienteComponent},
                           {path : 'perfil' , component : PerfilDoctorComponent},
-                          {path : 'configuracion' , component : ConfiguracionComponent}]}];
+                          {path : 'configuracion' , component : ConfiguracionComponent},
+                          {path: 'password', component: PasswordConfigComponent}]}
+                          ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

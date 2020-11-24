@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header w-100 mt-3">
         <div class="d-flex justify-content-center">
-            <ng-template [ngIf]="tieneFoto" [ngIfElse]="notienefoto">
+            <ng-template [ngIf]="tienefoto" [ngIfElse]="notienefoto">
                 <div>
                     <img src="/assets/img/doctor_avatar.png" alt="Foto de Perfil" width="180" height="180" class="circular-foto">
                 </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group mt-4 text-center" >
                         <button class="btn btn-primario w-75 mb-1">Guardar cambios</button> <br>
-                        <a href="#">Cambiar contraseña</a>
+                        <a [routerLink]="['/cuenta/password']">Cambiar contraseña</a>
                     </div>
                 </form>
             </div>
