@@ -89,24 +89,6 @@
     font-size: 12px;
     margin-top: 4px;
 }
-
  
 
-.btn-busqueda{
-   background-color: var(--color-primario);
-}
  
-
-.filtro-btn{
-     font-size: 20px;
-     width:40px ;
-     text-align: center;
-     color: var(--color-primario);
-     border-radius: 5px;
-     top: 50%;
-     left: 0;
-}
-
-.filtro-btn:hover{
-    cursor: pointer;
-}
