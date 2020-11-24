@@ -76,6 +76,13 @@ body{
     background-color: #f6f8ff;
 }
 
+
+/* estilos de background */
+
 .bg-light-blue{
      background-color:#f6f8ff;
+ }
+
+ .bg-primario-dark{
+      background-color: var(--color-primario-dark) ;
  }
