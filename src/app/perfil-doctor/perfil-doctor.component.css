@@ -1,0 +1,21 @@
+.circle-picture{
+    border-radius: 50%;
+}
+
+a {
+    display: block;
+}
+
+b{
+    display: block;
+}
+
+.lista-citas{
+    list-style: none;
+}
+
+.lista-citas li {
+    margin-top: 3px;
+    margin-left: 0;
+    color: var(--color-primario);
+}

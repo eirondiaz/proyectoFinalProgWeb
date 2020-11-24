@@ -71,3 +71,11 @@ body{
 .text-purple{
      color: #ABB5DE;
 }
+
+.text-light-blue{
+    background-color: #f6f8ff;
+}
+
+.bg-light-blue{
+     background-color:#f6f8ff;
+ }

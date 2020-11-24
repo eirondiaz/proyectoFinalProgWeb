@@ -50,9 +50,10 @@
     cursor: pointer;
 }
 
-.mainmenu li a {
+.mainmenu li a , .link-perfil{
     font-size: 14px;
     color: var(--color-secundario);
+    text-decoration: none;
 }
 
 .mainmenu li:hover .submenu{
