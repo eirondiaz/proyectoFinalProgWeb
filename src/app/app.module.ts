@@ -10,6 +10,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
 import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
 import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
     RegistroComponent,
     HomeComponent,
     ListadoPacienteComponent,
-    PerfilDoctorComponent
+    PerfilDoctorComponent,
+    ConfiguracionComponent
   ],  
   imports: [
     BrowserModule,

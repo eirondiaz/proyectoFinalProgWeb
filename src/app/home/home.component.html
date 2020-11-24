@@ -17,7 +17,7 @@
                             <i class="fas fa-hospital-user mr-1"></i>
                             Pacientes
                             <ul class="submenu">
-                                <li><a href="#">Ver listado</a></li>
+                                <li><a [routerLink]="['/cuenta']">Ver listado</a></li>
                                 <li><a href="#">Nuevo paciente</a></li>
                             </ul>
                         </li>
@@ -35,7 +35,7 @@
                         </li>
                         <li>
                             <i class="fas fa-cogs  mr-1"></i>
-                            <a [routerLink]="['/cuenta/perfil']"> Configuracion</a>
+                            <a [routerLink]="['/cuenta/configuracion']"> Configuracion</a>
                            </li>
                     </ul>
                 </div>

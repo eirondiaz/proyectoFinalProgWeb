@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="header w-100 mt-3">
+        <div class="d-flex justify-content-center">
+            <ng-template [ngIf]="tieneFoto" [ngIfElse]="notienefoto">
+                <div>
+                    <img src="/assets/img/doctor_avatar.png" alt="Foto de Perfil" width="180" height="180" class="circular-foto">
+                </div>
+                <div class="add-foto position-absolute">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </ng-template>
+    
+            <ng-template #notienefoto>
+                <div class="avatar circular-foto d-flex justify-content-center align-items-center position-relative">
+                    <div class="camara">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="add-foto position-absolute">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>  
+                   
+            </ng-template>
+        
+        </div>
+    </div>
+    <div class="main">
+        <div class="my-3 w-75 text-center mx-auto">
+            <h4>DATOS DE LA CUENTA</h4>
+
+            <div class="mt-3">
+                <form class="formulario text-left">
+                    <label for="">Nombre:</label>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre del usuario" class="form-control">
+                    </div>
+                    <label for="">Correo:</label>
+                    <div class="form-group">
+                        <input type="email" placeholder="tu@ejemplo.com" class="form-control">
+                    </div>
+                    <label for="">Pais:</label>
+                    <div class="form-group">
+                        <select id="" class="form-control">
+                            <option value="">Republica Dominicana</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-4 text-center" >
+                        <button class="btn btn-primario w-75 mb-1">Guardar cambios</button> <br>
+                        <a href="#">Cambiar contraseña</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
