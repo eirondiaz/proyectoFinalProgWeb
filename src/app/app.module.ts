@@ -13,6 +13,8 @@ import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { PasswordConfigComponent } from './password-config/password-config.component';
 import { NuevoPacienteComponent } from './nuevo-paciente/nuevo-paciente.component';
+import { NuevaCitasComponent } from './nueva-citas/nueva-citas.component';
+import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NuevoPacienteComponent } from './nuevo-paciente/nuevo-paciente.componen
     PerfilDoctorComponent,
     ConfiguracionComponent,
     PasswordConfigComponent,
-    NuevoPacienteComponent
+    NuevoPacienteComponent,
+    NuevaCitasComponent,
+    ListadoCitasComponent
   ],  
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+.list-container{
+    display: grid;
+    grid-template-columns: 10% 30% 30% 20%  10%;
+}
+ 
+.form-checkbox{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: arial;
+}
+
+.avatar{
+    border-radius: 100%;
+    background-color: #435a97;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .avatar i{
+        color: white;        
+    }
+
+.center-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-gris{
+    color: #777777;
+}
+
+.h7{
+    font-size: small;
+}
+
+.btn-ellipsis{
+    background: none;
+    border: none;
+}
+
+.btn-ellipsis:focus{
+    border: none;
+    outline: none;
+}
+
+

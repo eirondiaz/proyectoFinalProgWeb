@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { HomeComponent } from './home/home.component';
+import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
 import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
 import { LoginComponent } from './login/login.component';
 import { NuevoPacienteComponent } from './nuevo-paciente/nuevo-paciente.component';
@@ -17,7 +18,8 @@ const routes: Routes = [{path: '', component: LoginComponent},
                           {path : 'perfil' , component : PerfilDoctorComponent},
                           {path : 'configuracion' , component : ConfiguracionComponent},
                           {path: 'password', component: PasswordConfigComponent},
-                          {path: 'nuevo-paciente', component: NuevoPacienteComponent}]}
+                          {path: 'nuevo-paciente', component: NuevoPacienteComponent},
+                           {path: 'listado-citas', component: ListadoCitasComponent }]}
                          ];
 
 @NgModule({
