@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'; 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './../services/auth.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-registro',
@@ -7,30 +9,45 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  
+
   myForm: FormGroup = this._builder.group({
-    nombre: ['', Validators.required ],
+    nombre: ['', Validators.required],
     correo: ['', Validators.compose([Validators.required, Validators.email])],
     clave: ['', [Validators.required, Validators.minLength(8)]]
   })
 
-  valid:boolean;
+  valid: boolean;
+  error: string
 
   constructor(
-    private _builder:FormBuilder
+    private _builder: FormBuilder,
+    private _authService: AuthService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  register(){
-    this.valid = true
-    console.log(this.myForm.value)
-    console.log("Es el log-in")
+  register() {
+    this.valid = true   
+    if (!this.myForm.valid) return
+
+    this._authService.registrar(this.myForm.value).subscribe(
+      (resp => {
+        if (resp['ok'] == true) {
+          this._router.navigate([''])
+        }
+      }),
+      (error =>{
+        if(error.status == 400 && error['error']['detail'] == "user already registered"){         
+          this.error = "*Este usuario ya existe*"
+        }
+      })
+    )
   }
 
-  get nombre () {return this.myForm.get('nombre')}
-  get correo () {return this.myForm.get('correo')}
-  get clave () {return this.myForm.get('clave')}
+  get nombre() { return this.myForm.get('nombre') }
+  get correo() { return this.myForm.get('correo') }
+  get clave() { return this.myForm.get('clave') }
 
 }

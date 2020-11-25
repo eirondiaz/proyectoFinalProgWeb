@@ -8,4 +8,5 @@ export interface Paciente {
     email?: string
     sexo?: string
     alergias?: string
+    fecha_nac?:string
 }
