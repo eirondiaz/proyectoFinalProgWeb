@@ -12,6 +12,7 @@ import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.co
 import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { PasswordConfigComponent } from './password-config/password-config.component';
+import { NuevoPacienteComponent } from './nuevo-paciente/nuevo-paciente.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PasswordConfigComponent } from './password-config/password-config.compo
     ListadoPacienteComponent,
     PerfilDoctorComponent,
     ConfiguracionComponent,
-    PasswordConfigComponent
+    PasswordConfigComponent,
+    NuevoPacienteComponent
   ],  
   imports: [
     BrowserModule,
