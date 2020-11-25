@@ -17,4 +17,8 @@ export class MedicoService {
   updateEmailName(data) {
     return this.http.put<any>(this.URL + '/updateEmailName?token=' + localStorage.getItem('token'), data)
   }
+
+  getPais(){
+    return this.http.get("https://restcountries.eu/rest/v2/all")
+  }
 }
