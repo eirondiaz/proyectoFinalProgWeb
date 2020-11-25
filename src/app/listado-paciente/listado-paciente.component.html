@@ -4,7 +4,7 @@
            <div class="d-flex justify-content-between" style="max-width: 800px;">
                 <div class="mt-1">
                     <span>Filtrado por: </span>
-                    <select name="zodiaco"  class="p-1" style="width: 130px;">
+                    <select #filtro name="zodiaco" class="p-1" style="width: 130px;">
                         <option value="Zodiaco">Zodiaco</option>
                         <option value="Citas">Visitas</option>
                     </select>
@@ -13,8 +13,8 @@
                     <form class="">
                         <div class="form-group">
                             <label>Fecha: </label>
-                            <input type="date" class="ml-2 p-1">
-                            <button class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
+                            <input #citaFecha type="date" class="ml-2 p-1">
+                            <button (click)="buscar()" class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
                         </div>
                     </form>
                </div>
@@ -32,8 +32,8 @@
        </div>
         <div class="table-responsive w-100 " style="max-width: 800px;">
             <table class="w-100">
-                <tbody>
-                    <tr class="border-top bg-light-blue">
+                <tbody>     
+                    <tr class="border-top bg-light-blue" *ngFor="let paciente of pacientes">
                         <div>
                             <div class="list-container py-2">
                                 <div class="center-center">
@@ -45,110 +45,22 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="center-center ml-3">
-                                        <h6>Lissa Hansen</h6>
+                                        <h6>{{paciente.nombre}} {{paciente.apellido}}</h6>
                                     </div>
                                     </div>
                                 </div>
                                 <div class="center-center text-gris">
-                                    <h6>Zagitario</h6>
+                                    <h6>{{getZodiaco(paciente.fecha_nac)}}</h6>
                                 </div>
                                 <div class="center-center ">
-                                    <h6 class="h7">2020-23023</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </div>
-                    
-                            </div>                    
-                        </div>
-                    </tr>
-                    <tr class="border-top">
-                        <div>
-                            <div class="list-container py-2">
-                                <div class="center-center">
-                                    <input type="checkbox" class="form-checkbox">
-                                </div>
-                                <div>
-                                    <div class="d-flex">
-                                    <div class="avatar">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="center-center ml-3">
-                                        <h6>Lissa Hansen</h6>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="center-center text-gris">
-                                    <h6>Zagitario</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <h6 class="h7">2020-23023</h6>
+                                    <h6 class="h7">{{paciente.cedula}}</h6>
                                 </div>
                                 <div class="center-center ">
                                     <i class="fas fa-ellipsis-h"></i>
-                                </div>
-                    
+                                </div>                    
                             </div>                    
                         </div>
-                    </tr>
-                    <tr class="border-top bg-light-blue">
-                        <div>
-                            <div class="list-container py-2">
-                                <div class="center-center">
-                                    <input type="checkbox" class="form-checkbox">
-                                </div>
-                                <div>
-                                    <div class="d-flex">
-                                    <div class="avatar">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="center-center ml-3">
-                                        <h6>Lissa Hansen</h6>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="center-center text-gris">
-                                    <h6>Zagitario</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <h6 class="h7">2020-23023</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </div>
-                    
-                            </div>                    
-                        </div>
-                    </tr>
-                    <tr class="border-top">
-                        <div>
-                            <div class="list-container py-2">
-                                <div class="center-center">
-                                    <input type="checkbox" class="form-checkbox">
-                                </div>
-                                <div>
-                                    <div class="d-flex">
-                                    <div class="avatar">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="center-center ml-3">
-                                        <h6>Lissa Hansen</h6>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="center-center text-gris">
-                                    <h6>Zagitario</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <h6 class="h7">2020-23023</h6>
-                                </div>
-                                <div class="center-center ">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </div>
-                    
-                            </div>                    
-                        </div>
-                    </tr>
+                    </tr>           
                 </tbody>
             </table>
         </div>
