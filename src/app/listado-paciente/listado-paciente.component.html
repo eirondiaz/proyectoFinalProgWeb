@@ -4,9 +4,9 @@
            <div class="d-flex justify-content-between" style="max-width: 800px;">
                 <div class="mt-1">
                     <span>Filtrado por: </span>
-                    <select #filtro name="zodiaco" class="p-1" style="width: 130px;">
-                        <option value="Zodiaco">Zodiaco</option>
-                        <option value="Citas">Visitas</option>
+                    <select #filtro name="zodiaco" class="p-1" style="width: 130px;" (change)="VerPorCitas($event)">
+                        <option value="zodiaco">Zodiaco</option>
+                        <option value="citas">Visitas</option>
                     </select>
                 </div>
                 <div>

@@ -74,13 +74,11 @@ export class ListadoPacienteComponent implements OnInit {
     console.log(fecha)
   }
 
- /*
-  CambiarTable(e){
-      if(e.target.value = "Citas"){
-          this.verZodiaco = false ; 
+  VerPorCitas(e){
+      if(e.target.value == "citas"){
+         this.verZodiaco = false;
       } else {
-        this.verZodiaco = true; 
+        this.verZodiaco = true ; 
       }
-       console.log(e.target.value)
-  }*/
+  }
 }
