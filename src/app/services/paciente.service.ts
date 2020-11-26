@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class PacienteService {
 
-  URL:string = 'https://ube4kp.deta.dev/patient'
+  URL:string = 'https://n7pec0.deta.dev/patient'
 
   constructor(private http: HttpClient) { }
 

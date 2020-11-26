@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { MedicoService } from './../services/medico.service'
 import { validarQueSeanIguales } from './validarPass'
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-password-config',
   templateUrl: './password-config.component.html',
@@ -18,18 +19,41 @@ export class PasswordConfigComponent implements OnInit {
       validators: validarQueSeanIguales,
     })
   })
-
+  valid: boolean
+  claveIncorrecta: string
   constructor(
     private _builder: FormBuilder,
-    private _medicoService: MedicoService
+    private _medicoService: MedicoService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   updatePassword(){
-    let e = this.myForm.value
-    console.log(e)
+    
+    this.valid = true
+
+    if (!this.myForm.valid) return
+
+    let e = this.myForm.value   
+    let data = {
+      clave: e.oldClave,
+      nueva_clave: e.passwords.newClave
+    }
+
+    this._medicoService.updatePassword(data).subscribe(
+      (resp => {
+        this._router.navigate(['/cuenta/perfil'])
+      }),
+      (error => {
+        if(error.status == 401 && error['error']['detail'] == "incorrect password"){         
+          this.claveIncorrecta = "*Clave incorrecta*"
+        }else{
+          // console.log(error)
+        }        
+      })
+    )
   }
 
   passwordValid(){

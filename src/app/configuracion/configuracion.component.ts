@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { MedicoService } from './../services/medico.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-configuracion',
@@ -20,7 +21,8 @@ export class ConfiguracionComponent implements OnInit {
   
   constructor(
     private _builder: FormBuilder,
-    private _medicoService: MedicoService
+    private _medicoService: MedicoService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,13 +36,19 @@ export class ConfiguracionComponent implements OnInit {
 
     let e = this.myForm.value
 
-    let medico = {
-      nombre: e.nombre,
+    let data = {      
       profesion: e.profesion,
       pais: this.pais.nativeElement.options[this.pais.nativeElement.selectedIndex].text
     }
-    console.log(medico)
-
+   
+    this._medicoService.updateProfesionAndContry(data).subscribe(
+      (resp => {
+        this._router.navigate(['/cuenta/perfil'])
+      }),
+      (error => {
+        console.log(error)
+      })
+    )
   }
 
   getPais(){
