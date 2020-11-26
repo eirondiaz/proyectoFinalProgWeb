@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class MedicoService {
 
-  URL:string = 'http://localhost:8000/doctor'
+  URL:string = 'https://ube4kp.deta.dev/doctor'
 
   constructor(private http: HttpClient) { }
 
