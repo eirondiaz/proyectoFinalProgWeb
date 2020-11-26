@@ -1,6 +1,6 @@
 .list-container{
     display: grid;
-    grid-template-columns: 10% 30% 30% 20%  10%;
+    grid-template-columns: 10% 40% 30% 20%;
 }
  
 .form-checkbox{
@@ -47,5 +47,4 @@
     border: none;
     outline: none;
 }
-
-
+ 

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
-import { PacienteService } from './../services/paciente.service'
+import { PacienteService } from '../services/paciente.service';
 
 @Component({
   selector: 'app-listado-paciente',
@@ -15,7 +16,8 @@ export class ListadoPacienteComponent implements OnInit {
   @ViewChild('citaFecha', {static: true}) citaFecha: ElementRef
 
   constructor(
-    private _pacienteService: PacienteService
+    private _pacienteService: PacienteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -80,5 +82,9 @@ export class ListadoPacienteComponent implements OnInit {
       } else {
         this.verZodiaco = true ; 
       }
+  }
+
+  GoPacienteDetalle(){
+      this.router.navigate(['/paciente-detalle'])
   }
 }

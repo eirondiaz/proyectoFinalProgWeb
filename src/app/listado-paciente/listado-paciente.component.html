@@ -32,9 +32,9 @@
        </div>
         <div class="table-responsive w-100 " style="max-width: 800px;">
             <ng-template [ngIf]="verZodiaco" [ngIfElse]="visitas">
-                <table class="w-100">
+                <table class="w-100  position-relative">
                     <tbody>     
-                        <tr class="border-top bg-light-blue" *ngFor="let paciente of pacientes">
+                        <tr class="border-top " *ngFor="let paciente of pacientes">
                             <div>
                                 <div class="list-container py-2">
                                     <div class="center-center">
@@ -55,9 +55,6 @@
                                     </div>
                                     <div class="center-center ">
                                         <h6 class="h7">{{paciente.cedula}}</h6>
-                                    </div>
-                                    <div class="center-center ">
-                                        <i class="fas fa-ellipsis-h"></i>
                                     </div>                    
                                 </div>                    
                             </div>
@@ -80,7 +77,7 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="center-center ml-3">
-                                            <h6>{{paciente.nombre}} {{paciente.apellido}}</h6>
+                                            <h6><a [routerLink]="['/paciente-detalle']">{{paciente.nombre}} {{paciente.apellido}}</a></h6>
                                         </div>
                                         </div>
                                     </div>
@@ -89,13 +86,10 @@
                                     </div>
                                     <div class="center-center ">
                                         <h6 class="h7">{{paciente.cedula}}</h6>
-                                    </div>
-                                    <div class="center-center ">
-                                        <i class="fas fa-ellipsis-h"></i>
-                                    </div>                    
-                                </div>                    
+                                    </div>                   
+                                </div>              
                             </div>
-                        </tr>           
+                        </tr>     
                     </tbody>
                 </table>
             </ng-template>

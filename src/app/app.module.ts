@@ -15,6 +15,8 @@ import { PasswordConfigComponent } from './password-config/password-config.compo
 import { NuevoPacienteComponent } from './nuevo-paciente/nuevo-paciente.component';
 import { NuevaCitasComponent } from './nueva-citas/nueva-citas.component';
 import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
+import { PacienteService } from './services/paciente.service';
+import { PacienteDetalleComponent } from './paciente-detalle/paciente-detalle.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
     PasswordConfigComponent,
     NuevoPacienteComponent,
     NuevaCitasComponent,
-    ListadoCitasComponent
+    ListadoCitasComponent,
+    PacienteDetalleComponent
   ],  
   imports: [
     BrowserModule,
