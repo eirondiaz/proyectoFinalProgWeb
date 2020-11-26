@@ -8,6 +8,7 @@ import { PacienteService } from './../services/paciente.service'
   styleUrls: ['./listado-paciente.component.css']
 })
 export class ListadoPacienteComponent implements OnInit {
+  verZodiaco:boolean = true; 
 
   pacientes: Paciente []  
   @ViewChild('filtro', {static: true}) filtro: ElementRef
@@ -73,4 +74,13 @@ export class ListadoPacienteComponent implements OnInit {
     console.log(fecha)
   }
 
+ /*
+  CambiarTable(e){
+      if(e.target.value = "Citas"){
+          this.verZodiaco = false ; 
+      } else {
+        this.verZodiaco = true; 
+      }
+       console.log(e.target.value)
+  }*/
 }
