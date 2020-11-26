@@ -2,35 +2,44 @@
 <div class="container">
     <div class="w-75 mx-auto px-4 mt-5" style="max-width: 450px;">
         <div class="formulario">
-            <form>
+            <form [formGroup]="myForm">
                 <fieldset id="box1">
-                     <h2 class="mb-4">Datos del paciente</h2>
-                     <i>(Informacion personal)</i> <br>
+                    <h2 class="mb-4">Datos del paciente</h2>
+                    <i>(Informacion personal)</i> <br>
 
-                     <label>Nombre: </label>
+                    <label>Nombre: </label>
                     <div class="form-group mr-2">
-                        <input type="text" placeholder="Nombre del paciente" class="form-control">
+                        <input formControlName="nombre" type="text" placeholder="Nombre del paciente" class="form-control">
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"> 
+                            <span class="text-danger">*El nombre es requerida*</span>
+                        </div>
                     </div>
                     <label>Apellido: </label>
                     <div class="form-group">
-                        <input type="text" placeholder="Apellido del paciente" class="form-control">
+                        <input formControlName="apellido" type="text" placeholder="Apellido del paciente" class="form-control">
+                        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"> 
+                            <span class="text-danger">*El apellido es requerido*</span>
+                        </div>
                     </div>
                     <label>Fecha de nacimiento: </label>
                     <div class="form-group">
-                        <input type="date" class="form-control">
+                        <input formControlName="fecha_nac" type="datetime-local" class="form-control">
+                        <div *ngIf="fecha_nac.invalid && (fecha_nac.dirty || fecha_nac.touched)"> 
+                            <span class="text-danger">*La fecha de nacimiento es requerida</span>
+                        </div>
                     </div>
                     <div class="radio-group mt-2">
                         <div class="row">
                             <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                             <div class="col-sm-10">
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" #rbt1 value="option1" checked>
                                 <label class="form-check-label" for="gridRadios1">
                                   Hombre
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" #rbt2 value="option2">
                                 <label class="form-check-label" for="gridRadios2">
                                   Mujer
                                 </label>
@@ -39,7 +48,7 @@
                           </div>
                     </div>
                      <div class="form-group mt-3">
-                        <button class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()">Siguiente</button>
+                        <button [disabled]="!firstFormValidation()" class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()">Siguiente</button>
                     </div> 
                 </fieldset>
                 <fieldset id="box2" class="d-none">
@@ -49,11 +58,18 @@
                         <div class="mt-3">
                             <div class="form-group">
                                 <span>Correo: </span>
-                                <input type="email" placeholder="paciente@ejemplo.com" class="form-control">
+                                <input formControlName="email" type="email" placeholder="paciente@ejemplo.com" class="form-control">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)"> 
+                                    <span class="text-danger" *ngIf="email.errors.required">*El correo es requerido*</span>
+                                    <span class="text-danger" *ngIf="email.errors.email">*Introduzca un correo valido*</span>
+                                </div>                                          
                             </div>
                             <div class="form-group">
                                 <span>Cedula: </span>
-                                <input type="number" placeholder="Cedula o ID" class="form-control">
+                                <input formControlName="cedula" type="number" placeholder="Cedula o ID" class="form-control">
+                                <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)"> 
+                                    <span class="text-danger">*La cedula es requerida</span>
+                                </div>
                             </div>
                         </div> 
 
@@ -61,7 +77,7 @@
                         <div class="mt-3">
                             <label>Tipo de sangre</label>
                             <div class="form-group">
-                                <select class="form-control">
+                                <select #sangre class="form-control">
                                     <option value="A+">A positivo (A+)</option>
                                     <option value="A-">A negativo (A-)</option>
                                     <option value="B+">B positivo (B+)</option>
@@ -73,9 +89,9 @@
                                 </select>
                             </div>
                             <label>Alergias</label>
-                            <div class="form-group">
+                            <div class="form-group">                      
                                 <ng-template [ngIf]="showSelectAlergia" [ngIfElse]="showBoxOtrosAlergias">
-                                    <select class="form-control" (change)="CambiarBox($event)">
+                                    <select #alergia class="form-control" (change)="CambiarBox($event)">
                                         <option value="">Alergia a los ácaros</option>
                                         <option value="">Alergia al polen.</option>
                                         <option value="">Alergia al pelo de animales</option>
@@ -85,13 +101,13 @@
                                     </select>
                                 </ng-template>
                                 <ng-template #showBoxOtrosAlergias>
-                                    <input type="text" placeholder="Escribir el nombre de la alergia" class="form-control">
+                                    <input #alergia type="text" placeholder="Escribir el nombre de la alergia" class="form-control">
                                 </ng-template>
                             </div>
                         </div>
                         <div class="mt-4">
                             <button class="btn btn-dark mt-3" (click)="PreviusBox()">Ir atras</button>
-                            <button class="btn btn-primario ml-2 mt-3" (click)="NextBox()">Siguiente</button>
+                            <button [disabled]="!secondFormValidation()" class="btn btn-primario ml-2 mt-3" (click)="NextBox()">Siguiente</button>
                         </div>
                     </div>
                 </fieldset>
@@ -100,6 +116,7 @@
                      <div class="d-flex fixed-size">
                            <!-- Extrar los datos del formGroup y crear un Preview del paciente 
                             para confimar que los datos son correctos.-->
+                            <button class="btn btn-primary" (click)="createPatient()">Guardar paciente</button>
                      </div>
                 </fieldset>
             </form>
