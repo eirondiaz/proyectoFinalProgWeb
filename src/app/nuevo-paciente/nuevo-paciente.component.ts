@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
 import { PacienteService } from './../services/paciente.service'
 
@@ -33,10 +34,12 @@ export class NuevoPacienteComponent implements OnInit {
 
   constructor(
     private _pacienteService: PacienteService,
-    private _builder: FormBuilder
+    private _builder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+     
   }
 
   CambiarBox(e) {
@@ -63,10 +66,19 @@ export class NuevoPacienteComponent implements OnInit {
   PreviusBox() {
     let activeBox = document.getElementById(this.registroPacienteBoxes[this.currentBox]);
     let preBox = document.getElementById(this.registroPacienteBoxes[this.currentBox - 1]);
+    
+    if (this.currentBox == this.registroPacienteBoxes.length -1 ){
+        let firstbox =  document.getElementById(this.registroPacienteBoxes[0]);
 
-    activeBox.classList.add('d-none')
-    preBox.classList.remove('d-none');
-    this.currentBox -= 1;
+        activeBox.classList.add('d-none')
+        firstbox.classList.remove('d-none');
+        this.currentBox = 0; 
+        
+      } else {
+          activeBox.classList.add('d-none')
+          preBox.classList.remove('d-none');
+          this.currentBox -= 1;
+    }
   }
 
   saveFoto(e) {
@@ -114,8 +126,10 @@ export class NuevoPacienteComponent implements OnInit {
     this._pacienteService.createPatient(this.paciente).subscribe(
       (resp => {
         console.log("Paciente guardado exitosamente")
+        this.router.navigate(['/cuenta']);
       }),
       (error => console.log(error))
     )
   }
+  
 }
