@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class AuthService {
 
-  URL:string = 'https://ube4kp.deta.dev/authentication'
+  URL:string = 'https://n7pec0.deta.dev/authentication'
 
   constructor(private http: HttpClient) { }
 

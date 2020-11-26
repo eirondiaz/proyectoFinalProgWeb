@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class MedicoService {
 
-  URL:string = 'https://ube4kp.deta.dev/doctor'
+  URL:string = 'https://n7pec0.deta.dev/doctor'
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,15 @@ export class MedicoService {
     return this.http.put<any>(this.URL + '/updateEmailName?token=' + localStorage.getItem('token'), data)
   }
 
+  getMedico(){
+    return this.http.get<any>(this.URL + '/getCurrentDoctor?token=' + localStorage.getItem('token'))
+  }
+
   getPais(){
     return this.http.get("https://restcountries.eu/rest/v2/all")
+  }
+
+  updateProfesionAndContry(data){
+    return this.http.put<any>(this.URL + '/updateProfesionAndContry?token=' + localStorage.getItem('token'), data)
   }
 }

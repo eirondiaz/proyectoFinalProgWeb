@@ -3,4 +3,6 @@ export interface Medico {
     nombre?: string
     correo?: string
     clave?: string
+    profesion?: string
+    pais?: string
 }
