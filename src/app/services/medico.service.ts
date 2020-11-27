@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Medico } from '../Models/Medico';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http'
 export class MedicoService {
 
 
-  URL:string = 'https://n7pec0.deta.dev'
+  URL:string = 'https://n7pec0.deta.dev/doctor'
 
 
   constructor(private http: HttpClient) { }

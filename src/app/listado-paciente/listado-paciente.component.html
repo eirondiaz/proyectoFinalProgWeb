@@ -46,7 +46,7 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="center-center ml-3">
-                                            <h6>{{paciente.nombre}} {{paciente.apellido}}</h6>
+                                            <h6><a [routerLink]="['/cuenta/paciente-detalle', paciente.id]">{{paciente.nombre}} {{paciente.apellido}}</a></h6>
                                         </div>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="center-center ml-3">
-                                            <h6><a [routerLink]="['/paciente-detalle']">{{paciente.nombre}} {{paciente.apellido}}</a></h6>
+                                            <h6><a [routerLink]="['/cuenta/paciente-detalle']">{{paciente.nombre}} {{paciente.apellido}}</a></h6>
                                         </div>
                                         </div>
                                     </div>

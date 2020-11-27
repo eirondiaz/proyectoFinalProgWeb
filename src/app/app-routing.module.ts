@@ -21,7 +21,7 @@ const routes: Routes = [{path: '', component: LoginComponent},
                           {path: 'password', component: PasswordConfigComponent},
                           {path: 'nuevo-paciente', component: NuevoPacienteComponent},
                            {path: 'listado-citas', component: ListadoCitasComponent },
-                          {path: 'paciente-detalle', component: PacienteDetalleComponent}]}
+                          {path: 'paciente-detalle/:id', component: PacienteDetalleComponent}]}
                          ];
 
 @NgModule({

@@ -6,9 +6,9 @@
                 </div>
                <div class="menu-box">
                 <div class="avatar-perfil text-center p-3 mt-4">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row" *ngIf="medico">
                         <img src="/assets/img/doctor_avatar.png" width="30" height="30" alt="Avatar" class="avatar">
-                        <a [routerLink]="['/cuenta/perfil']" class="link-perfil"><p class="ml-2 mt-1">Karina Beltre</p></a>
+                        <a [routerLink]="['/cuenta/perfil']" class="link-perfil"><p class="ml-2 mt-1">{{medico.nombre}}</p></a>
                     </div>
                 </div>
                 <div class="menu-main mt-4">
