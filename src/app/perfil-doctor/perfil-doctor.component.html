@@ -28,15 +28,15 @@
             <div class="mt-3 p-4 bg-light-blue border rounded ">
                     <h5>DATOS DEL USUARIO</h5>
                     
-                     <div class="mt-4">
+                     <div class="mt-4" *ngIf="medico">
                         <b class="mt-2">Correo Electronico</b>
                         <a class="text-primario">{{medico != null ? medico.correo: ""}}</a>
 
-                        <b class="mt-4">Profecion</b>
-                        <span>{{medico != null ? medico.profesion: ""}}</span>
+                        <b class="mt-4">Profesion</b>
+                        <span>{{medico.profesion != null ? medico.profesion: "No disponible"}}</span>
 
                         <b class="mt-4">Pais</b>
-                        <span>{{medico != null ? medico.pais: ""}}</span>
+                        <span>{{medico.pais != null ? medico.pais: "No disponible"}}</span>
                      </div>
             </div>
             <div class="flex-grow-1">
