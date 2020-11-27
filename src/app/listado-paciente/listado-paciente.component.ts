@@ -87,4 +87,9 @@ export class ListadoPacienteComponent implements OnInit {
   GoPacienteDetalle(){
       this.router.navigate(['/paciente-detalle'])
   }
+
+  SelectAllBox(){
+     let checkBoxes = document.getElementsByClassName('form-checkbox'); 
+      
+  }
 }

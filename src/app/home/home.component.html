@@ -7,7 +7,12 @@
                <div class="menu-box">
                 <div class="avatar-perfil text-center p-3 mt-4">
                     <div class="d-flex flex-row" *ngIf="medico">
-                        <img src="/assets/img/doctor_avatar.png" width="30" height="30" alt="Avatar" class="avatar">
+                        <ng-template [ngIf]="medico.foto" [ngIfElse]="avatar">
+                            <img src="/assets/img/doctor_avatar.png" width="30" height="30" alt="Avatar" class="avatar">
+                        </ng-template>
+                        <ng-template #avatar>
+                            <i class="far fa-user-circle avatar"></i>
+                        </ng-template>
                         <a [routerLink]="['/cuenta/perfil']" class="link-perfil"><p class="ml-2 mt-1">{{medico.nombre}}</p></a>
                     </div>
                 </div>
@@ -54,7 +59,7 @@
                 </div>
                </div>
         </section>
-        <section class="flex-md-grow-1 main-content px-md-5">      
+        <section *ngIf="medico" class="flex-md-grow-1 main-content px-md-5">      
            <router-outlet></router-outlet>
         </section>
     </div>

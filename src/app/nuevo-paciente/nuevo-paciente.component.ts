@@ -81,6 +81,11 @@ export class NuevoPacienteComponent implements OnInit {
     }
   }
 
+  LoadImg(){
+     let file = document.getElementById('fileImg');
+     file.click();
+  }
+
   saveFoto(e) {
     console.log(e.target.value)
 

@@ -17,6 +17,7 @@ import { NuevaCitasComponent } from './nueva-citas/nueva-citas.component';
 import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
 import { PacienteService } from './services/paciente.service';
 import { PacienteDetalleComponent } from './paciente-detalle/paciente-detalle.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [

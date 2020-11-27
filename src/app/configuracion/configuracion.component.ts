@@ -12,6 +12,7 @@ export class ConfiguracionComponent implements OnInit {
   tienefoto:boolean = false; 
   valid: Boolean
   allPais: any [] = []
+  srcDataImg:string ; 
   @ViewChild('pais', {static: true}) pais: ElementRef
 
   myForm: FormGroup = this._builder.group({
@@ -78,12 +79,15 @@ export class ConfiguracionComponent implements OnInit {
         file = fileSelect[0]
         let fileReader = new FileReader()
 
-        fileReader.onload = function (FileLoadevent) {
-            let srcData = FileLoadevent.target.result        
+        fileReader.onload = (FileLoadevent) => {
+            this.SendToDb(FileLoadevent.target.result);       
         }
-
         fileReader.readAsDataURL(file)
     }
+  }
+
+  SendToDb(src){
+     // enviar a la base de datos 
   }
 
 
