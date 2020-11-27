@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Medico } from '../Models/Medico';
+import { AuthService } from '../services/auth.service';
 import { MedicoService } from './../services/medico.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class HomeComponent implements OnInit {
    medico:Medico; 
    
   constructor(
-    private _medicoService: MedicoService
+    private _medicoService: MedicoService,
+    public authServices:AuthService
   ) { }
 
   ngOnInit(): void {
