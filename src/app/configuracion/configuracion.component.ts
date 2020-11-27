@@ -62,6 +62,31 @@ export class ConfiguracionComponent implements OnInit {
     )
   }
 
+
+   LoadImage(){
+       let file = document.getElementById('fileImg');
+       file.click();
+   } 
+
+
+
+   saveFoto(e) {
+    /* Nota: actualizar los datod de la db desde aqui*/
+    let fileSelect = e.target.files
+    let file;
+    if(fileSelect.length > 0){
+        file = fileSelect[0]
+        let fileReader = new FileReader()
+
+        fileReader.onload = function (FileLoadevent) {
+            let srcData = FileLoadevent.target.result        
+        }
+
+        fileReader.readAsDataURL(file)
+    }
+  }
+
+
   get nombre () {return this.myForm.get('nombre')}
   get profesion () {return this.myForm.get('profesion')}
 

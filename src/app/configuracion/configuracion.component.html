@@ -11,8 +11,11 @@
             </ng-template>
     
             <ng-template #notienefoto>
-                <div class="avatar circular-foto d-flex justify-content-center align-items-center position-relative">
+                <div (click)="LoadImage()" class="avatar circular-foto d-flex justify-content-center align-items-center position-relative">
                     <div class="camara">
+                         <div class="d-none" >
+                            <input type="file" id="fileImg" (change)="saveFoto($event)">
+                         </div>
                         <i class="fas fa-camera"></i>
                     </div>
                     <div class="add-foto position-absolute">
