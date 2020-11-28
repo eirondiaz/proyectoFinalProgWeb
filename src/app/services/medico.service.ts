@@ -25,6 +25,10 @@ export class MedicoService {
     return this.http.get<any>(this.URL + '/getCurrentDoctor?token=' + localStorage.getItem('token'))
   }
 
+  getCurrentDoctorWithClossestConsults(){
+    return this.http.get<any>(this.URL + '/getCurrentDoctorWithClossetConsults?token=' + localStorage.getItem('token'))
+  }
+
   getPais(){
     return this.http.get("https://restcountries.eu/rest/v2/all")
   }

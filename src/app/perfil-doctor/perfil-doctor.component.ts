@@ -21,7 +21,7 @@ export class PerfilDoctorComponent implements OnInit {
   }
 
   getMedico() {
-    this._medicoService.getMedico().subscribe(
+    this._medicoService.getCurrentDoctorWithClossestConsults().subscribe(
       (resp => {
         this.medico = <Medico>resp.data
         console.log(resp.data)
@@ -30,5 +30,4 @@ export class PerfilDoctorComponent implements OnInit {
       (error => console.log(error))
     )
   }
-
 }
