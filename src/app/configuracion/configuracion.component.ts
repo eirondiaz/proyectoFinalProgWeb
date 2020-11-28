@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Component, OnInit} from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, Form } from '@angular/forms'
 import { MedicoService } from './../services/medico.service'
 import { Router } from '@angular/router'
+import { DomSanitizer } from '@angular/platform-browser';
+import { Medico } from '../Models/Medico';
 
 @Component({
   selector: 'app-configuracion',
@@ -9,69 +11,77 @@ import { Router } from '@angular/router'
   styleUrls: ['./configuracion.component.css']
 })
 export class ConfiguracionComponent implements OnInit {
+  doctor:Medico; 
   tienefoto:boolean = false; 
+  
+  nombreControl:FormControl;
+  apellidoControl:FormControl; 
+  paisControl:FormControl; 
+
   valid: Boolean
   allPais: any [] = []
   srcDataImg:string ; 
-  @ViewChild('pais', {static: true}) pais: ElementRef
 
-  myForm: FormGroup = this._builder.group({
-    nombre: ['', Validators.required],
-    profesion: ['', Validators.required],
-  })
-  
+  myForm: FormGroup; 
+
   constructor(
     private _builder: FormBuilder,
     private _medicoService: MedicoService,
     private _router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.getPais()
-  }
+ async ngOnInit(){
+     await this.crearCampos();
+     await this.createForm(); 
+}
 
-  createPatient(){
-    this.valid = true
+async crearCampos(){
+  this.nombreControl = new FormControl('', Validators.required);
+  this.apellidoControl =  new FormControl('', Validators.required);
+  this.paisControl =  new FormControl('', Validators.required);
+}
 
-    if (!this.myForm.valid) return
+ async createForm(){
+     this.myForm = this._builder.group({
+      nombre: this.nombreControl,
+      apellido: this.apellidoControl,
+      pais : this.paisControl
+    })
 
-    let e = this.myForm.value
+    await this.loadDatos(); 
+}
 
-    let data = {      
-      profesion: e.profesion,
-      pais: this.pais.nativeElement.options[this.pais.nativeElement.selectedIndex].text
-    }
-   
-    this._medicoService.updateProfesionAndContry(data).subscribe(
-      (resp => {
-        this._router.navigate(['/cuenta/perfil'])
-      }),
-      (error => {
-        console.log(error)
-      })
-    )
-  }
-
-  getPais(){
-    this._medicoService.getPais().subscribe(
-      (resp => {
-        let all = <[]> resp
-        all.forEach(element => {
-          this.allPais.push(element['name'])
-        });
-      })
-    )
-  }
+async loadDatos(){
+    this._medicoService.getMedico().subscribe(medico => {
+      this.doctor = medico.data ;
+      this.loadDatosOnFields();     
+      console.log(this.doctor)
+    })
+}
 
 
+loadDatosOnFields(){
+   this.nombreControl.setValue(this.doctor.nombre); 
+   this.apellidoControl.setValue(this.doctor.apellido);
+   console.log(this.doctor.apellido);
+}
+
+
+UpdateDoctor(data:any){
+    this._medicoService.updateDoctor(data).subscribe( data => {
+     console.log(data); 
+   })
+  console.log(data)
+}
+
+ 
    LoadImage(){
        let file = document.getElementById('fileImg');
        file.click();
    } 
 
 
-
-   saveFoto(e) {
+   saveFoto(e:any) {
     /* Nota: actualizar los datod de la db desde aqui*/
     let fileSelect = e.target.files
     let file;
@@ -86,12 +96,12 @@ export class ConfiguracionComponent implements OnInit {
     }
   }
 
-  SendToDb(src){
-     // enviar a la base de datos 
+  SendToDb(src:any){
+      this._medicoService.updateFoto({foto : src}).subscribe(data => {
+          console.log(data)
+      })
   }
-
-
-  get nombre () {return this.myForm.get('nombre')}
-  get profesion () {return this.myForm.get('profesion')}
-
 }
+
+
+

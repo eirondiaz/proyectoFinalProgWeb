@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
        //this._medicoService.
     this._medicoService.getMedico().subscribe(medico => {
       this.medico = medico.data;
-      console.log(this.medico)
+      console.log(this.medico.foto)
   })
   }
  

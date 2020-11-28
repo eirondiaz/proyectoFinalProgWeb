@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Medico } from '../Models/Medico';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,11 @@ export class MedicoService {
     return this.http.put<any>(this.URL + '/updateEmailName?token=' + localStorage.getItem('token'), data)
   }
 
-  getMedico(){
+  updateFoto(data:any) {
+    return this.http.put<any>(this.URL + '/updatePhoto?token=' + localStorage.getItem('token'), data)
+  }
+
+  getMedico(): Observable<any>{
     return this.http.get<any>(this.URL + '/getCurrentDoctor?token=' + localStorage.getItem('token'))
   }
 
@@ -35,5 +40,9 @@ export class MedicoService {
 
   updateProfesionAndContry(data){
     return this.http.put<any>(this.URL + '/updateProfesionAndContry?token=' + localStorage.getItem('token'), data)
+  }
+
+  updateDoctor(data:any){
+    return this.http.put<any>(this.URL + '/update?token=' + localStorage.getItem('token'), data)
   }
 }

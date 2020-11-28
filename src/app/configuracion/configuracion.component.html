@@ -1,12 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="doctor">
     <div class="header w-100 mt-3">
         <div class="d-flex justify-content-center">
-            <ng-template [ngIf]="tienefoto" [ngIfElse]="notienefoto">
+            <ng-template [ngIf]="docto" [ngIfElse]="notienefoto">
                 <div>
-                    <img src="/assets/img/doctor_avatar.png" alt="Foto de Perfil" width="180" height="180" class="circular-foto">
-                </div>
-                <div class="add-foto position-absolute">
-                    <i class="fas fa-plus"></i>
+                    <img src="{{doctor.foto}}" alt="Foto de Perfil" width="180" height="180" class="circular-foto">
                 </div>
             </ng-template>
     
@@ -22,7 +19,6 @@
                         <i class="fas fa-plus"></i>
                     </div>
                 </div>  
-                   
             </ng-template>
         
         </div>
@@ -32,29 +28,23 @@
             <h4>DATOS DE LA CUENTA</h4>
 
             <div class="mt-3">
-                <form [formGroup]="myForm" class="formulario text-left">
+                <form [formGroup]="myForm" (ngSubmit)="UpdateDoctor(myForm.value)" class="formulario text-left">
                     <label for="">Nombre:</label>
                     <div class="form-group">
                         <input formControlName="nombre" type="text" placeholder="Nombre del usuario" class="form-control">
-                        <div *ngIf="nombre.invalid && valid"> 
+                        <div *ngIf="nombre.invalid"> 
                             <span class="text-danger">*El nombre es requerido*</span>
                         </div>
                     </div>
-                    <label for="">Profesion:</label>
+                    <label>Apellido:</label>
                     <div class="form-group">
-                        <input formControlName="profesion" type="text" placeholder="Carrera profesional" class="form-control">
-                        <div *ngIf="profesion.invalid && valid"> 
-                            <span class="text-danger">*La profesion es requerida*</span>
+                        <input formControlName="apellido" type="text" placeholder="Nombre del usuario" class="form-control">
+                        <div *ngIf="apellido.invalid"> 
+                            <span class="text-danger">*La apellido es requerida*</span>
                         </div>
                     </div>
-                    <label for="">Pais:</label>
-                    <div class="form-group">
-                        <select id="" #pais class="form-control" >
-                            <option value="" *ngFor="let pais of allPais">{{pais}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group mt-4 text-center" >
-                        <button (click)="createPatient()" class="btn btn-primario w-75 mb-1">Guardar cambios</button> <br>
+                    <div class="form-group mt-4 text-center">
+                        <button type="submit" class="btn btn-primario w-75 mb-1">Guardar cambios</button> <br>
                         <a [routerLink]="['/cuenta/password']">Cambiar contraseña</a>
                     </div>
                 </form>

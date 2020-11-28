@@ -9,4 +9,5 @@ export interface Paciente {
     sexo?: string
     alergias?: string
     fecha_nac?:string
+    total_visit:string 
 }
