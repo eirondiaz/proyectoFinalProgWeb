@@ -17,14 +17,14 @@ const routes: Routes = [{path: '', component: LoginComponent},
                         {path: 'registro', component: RegistroComponent},
                         {path: 'cuenta', component: HomeComponent,
                         children: [
-                          {path: '', component: ListadoPacienteComponent},
-                          {path : 'perfil' , component : PerfilDoctorComponent},
-                          {path : 'configuracion' , component : ConfiguracionComponent},
-                          {path: 'password', component: PasswordConfigComponent},
-                          {path: 'nuevo-paciente', component: NuevoPacienteComponent},
-                          {path: 'listado-citas', component: ListadoCitasComponent },
-                          {path: 'nueva-cita', component: NuevaCitasComponent },
-                          {path: 'paciente-detalle/:id', component: PacienteDetalleComponent}]}
+                          {path: '', component: ListadoPacienteComponent,canActivate:[LoggedInGuard]},
+                          {path : 'perfil' , component : PerfilDoctorComponent,canActivate:[LoggedInGuard]},
+                          {path : 'configuracion' , component : ConfiguracionComponent,canActivate:[LoggedInGuard]},
+                          {path: 'password', component: PasswordConfigComponent,canActivate:[LoggedInGuard]},
+                          {path: 'nuevo-paciente', component: NuevoPacienteComponent,canActivate:[LoggedInGuard]},
+                          {path: 'listado-citas', component: ListadoCitasComponent ,canActivate:[LoggedInGuard]},
+                          {path: 'nueva-cita', component: NuevaCitasComponent ,canActivate:[LoggedInGuard]},
+                          {path: 'paciente-detalle/:id', component: PacienteDetalleComponent}],canActivate:[LoggedInGuard]}
                          ];
 
 @NgModule({
