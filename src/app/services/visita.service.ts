@@ -20,8 +20,8 @@ export class VisitaService {
   }
 
 
-  getVisitaById(id) {
-    return this.http.get<any>(this.URL + '/' + id)
+  getVisitaById(id:any) {
+    return this.http.get<any>(this.URL + '/' + id + '?token=' + localStorage.getItem('token'))
   }
 
   updateVisita(id, data) {

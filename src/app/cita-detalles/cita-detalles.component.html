@@ -1,1 +1,42 @@
-<p>cita-detalles works!</p>
+<ng-template [ngIf]="cita" [ngIfElse]="loading">
+    <div class="container">
+        <div class="d-flex">
+           <div class="flex-grow-1">
+               <div class="card mt-3 ml-2 p-5">
+                   <h5>INFORMACION DE LA CONSULTA</h5>
+                   
+                    <div class="mt-2" *ngIf="paciente">
+                       <b class="mt-2">Motivo:</b>
+                       <a class="text-primario">{{cita!= null ? cita.motivo: ""}}</a>
+
+                       <b class="mt-2">Fecha: </b>
+                       <span>{{cita.fecha != null ? cita.fecha: "No disponible"}}</span>
+
+                       <b class="mt-2">No. seguro</b>
+                       <span>{{cita.no_seguro != null ? cita.no_seguro: "No disponible"}}</span>
+
+                       <b class="mt-2">Dianostico</b>
+                       <span>{{cita.diagnostico != null ? cita.diagnostico: "No disponible"}}</span>
+
+                       <b class="mt-2">Tipo de sangre</b>
+                       <span>{{cita.nota != null ? cita.nota: "No disponible"}}</span>
+
+                    </div>
+      
+               </div>
+           </div>
+        </div>
+   </div>
+</ng-template>
+<ng-template #loading>    
+        <div class="container">
+            <div class="d-flex justify-content-center fixed-size">
+                <div class="align-self-center text-center">
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <div>
+                        <span>Cargando...</span>
+                    </div>
+               </div>
+            </div>
+    </div>
+</ng-template>
