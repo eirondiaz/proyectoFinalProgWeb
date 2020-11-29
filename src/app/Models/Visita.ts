@@ -7,4 +7,5 @@ export interface Visita {
     diagnostico?: string
     fecha?:string; 
     foto_evidencia?: string
+    id_paciente?: number
 }
