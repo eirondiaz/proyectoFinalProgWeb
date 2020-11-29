@@ -9,11 +9,12 @@ import { PacienteService } from '../services/paciente.service';
   styleUrls: ['./listado-paciente.component.css']
 })
 export class ListadoPacienteComponent implements OnInit {
-  verZodiaco:boolean = true; 
+  verZodiaco: boolean = true;
 
-  pacientes: Paciente []  
-  @ViewChild('filtro', {static: true}) filtro: ElementRef
-  @ViewChild('citaFecha', {static: true}) citaFecha: ElementRef
+  pacientes: Paciente[]
+  listDelete: any[] = []
+  @ViewChild('filtro', { static: true }) filtro: ElementRef
+  @ViewChild('citaFecha', { static: true }) citaFecha: ElementRef
 
   constructor(
     private _pacienteService: PacienteService,
@@ -24,21 +25,21 @@ export class ListadoPacienteComponent implements OnInit {
     this.getAllPaciente()
   }
 
-  buscar(){   
-    this.filtro.nativeElement.value == "Zodiaco" ? this.getAllPaciente() : this.getAllPacientByDate() 
+  buscar() {
+    this.filtro.nativeElement.value == "Zodiaco" ? this.getAllPaciente() : this.getAllPacientByDate()
   }
 
-  getAllPaciente(){
+  getAllPaciente() {
     this._pacienteService.getAllPatients().subscribe(
-      (resp => {      
-        this.pacientes = <Paciente []> resp['data']
+      (resp => {
+        this.pacientes = <Paciente[]>resp['data']
         console.log(this.pacientes);
       }),
       (error => console.log(error))
     )
   }
 
-  getZodiaco(fecha){
+  getZodiaco(fecha) {
     let dia = Number(fecha.substring(8, 10))
     let mes = Number(fecha.substring(5, 7))
 
@@ -68,29 +69,57 @@ export class ListadoPacienteComponent implements OnInit {
       return ('Piscis');
   }
 
-  getAllPacientByDate(){
+  getAllPacientByDate() {
     let fecha = this.citaFecha.nativeElement.value
-    if (fecha == ''){
+    if (fecha == '') {
       alert("Para buscar los pacientes por dia de cita debe introducir una fecha")
       return
     }
     console.log(fecha)
   }
 
-  VerPorCitas(e){
-      if(e.target.value == "citas"){
-         this.verZodiaco = false;
-      } else {
-        this.verZodiaco = true ; 
+  VerPorCitas(e) {
+    if (e.target.value == "citas") {
+      this.verZodiaco = false;
+    } else {
+      this.verZodiaco = true;
+    }
+  }
+
+  GoPacienteDetalle() {
+    this.router.navigate(['/paciente-detalle'])
+  }
+
+  selectOneBox = (e, id) => {
+    if (e.target.checked) {      
+      this.listDelete.push(id)
+      console.log("Esta cheado")
+      console.log(this.listDelete)
+    } else {
+      console.log("no esta chekeado")
+      this.listDelete = this.listDelete.filter(x => x != id)
+      console.log(this.listDelete)
+    }
+  }
+
+  SelectAllBox(e) {
+    let checkBoxes = document.getElementsByClassName('form-checkbox');
+
+    if (e.target.checked) {
+      for (let i = 0; i < checkBoxes.length; i++) {
+        checkBoxes[i].checked = true
       }
-  }
-
-  GoPacienteDetalle(){
-      this.router.navigate(['/paciente-detalle'])
-  }
-
-  SelectAllBox(){
-     let checkBoxes = document.getElementsByClassName('form-checkbox'); 
-      
+      this.pacientes.forEach(paciente => {
+        this.listDelete.push(paciente.id)
+      });
+      console.log(this.listDelete)
+    }
+    else {
+      for (let i = 0; i < checkBoxes.length; i++) {
+        checkBoxes[i].checked = false
+      }
+      this.listDelete = []
+      console.log(this.listDelete)
+    }
   }
 }
