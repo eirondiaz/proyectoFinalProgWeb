@@ -17,6 +17,8 @@ export class ListadoPacienteComponent implements OnInit {
   deleteList:string[] = [];
   fehaGroup:FormGroup; 
 
+  loading:boolean = true; 
+
   @ViewChild('filtro', { static: true }) filtro: ElementRef
   @ViewChild('citaFecha', { static: true }) citaFecha: ElementRef
  
@@ -25,19 +27,17 @@ export class ListadoPacienteComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+
+ ngOnInit() {
     this.getAllPaciente()
   }
 
-  buscar() {
-    this.filtro.nativeElement.value == "Zodiaco" ? this.getAllPaciente() : this.getAllPacientByDate()
-  }
-
-  getAllPaciente() {
+getAllPaciente() {
     this._pacienteService.getAllPatients().subscribe(
       (resp => {
         this.pacientes = <Paciente[]>resp['data']
         console.log(this.pacientes);
+        this.loading = false; 
       }),
       (error => console.log(error))
     )
@@ -72,15 +72,7 @@ export class ListadoPacienteComponent implements OnInit {
     if ((dia >= 20 && mes == 2) || (dia <= 20 && mes == 3))
       return ('Piscis');
   }
-
-  getAllPacientByDate() {
-    let fecha = this.citaFecha.nativeElement.value
-    if (fecha == '') {
-      alert("Para buscar los pacientes por dia de cita debe introducir una fecha")
-      return
-    }
-    console.log(fecha)
-  }
+ 
 
   VerPorCitas(e) {
     if (e.target.value == "citas") {
@@ -90,10 +82,7 @@ export class ListadoPacienteComponent implements OnInit {
     }
   }
 
-  GoPacienteDetalle() {
-    this.router.navigate(['/paciente-detalle'])
-  }
-
+ 
   selectOneBox = (e, id) => {
     if (e.target.checked) {      
       this.listDelete.push(id)
@@ -106,6 +95,7 @@ export class ListadoPacienteComponent implements OnInit {
     }
   }
 
+/*
   SelectAllBox(e) {
     let checkBoxes = document.getElementsByClassName('form-checkbox');
 
@@ -125,5 +115,14 @@ export class ListadoPacienteComponent implements OnInit {
       this.listDelete = []
       console.log(this.listDelete)
     }
+  }
+
+*/
+  DeletePaciente(){
+     console.log(this.listDelete)
+     this._pacienteService.deleteMultiplePatient(this.listDelete).subscribe(res => {
+        console.log(res) ; 
+        this.router.navigate(['/cuenta']); 
+     })
   }
 }

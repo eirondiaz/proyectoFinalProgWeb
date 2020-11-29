@@ -11,24 +11,28 @@ export class PacienteService {
 
   constructor(private http: HttpClient) { }
 
-  createPatient(data) {
+  createPatient(data):Observable<any> {
     return this.http.post<any>(this.URL + '/create?token=' + localStorage.getItem('token'), data)
   }
 
-  getAllPatients() {
+  getAllPatients():Observable<any> {
     return this.http.get<any>(this.URL + '/patients?token=' + localStorage.getItem('token'))
   }
 
-  getPatientById(id) {
+  getPatientById(id):Observable<any> {
     return this.http.get<any>(this.URL + '/' + id)
   }
 
 
-  updatePatient(id, data) {
+  updatePatient(id, data):Observable<any> {
     return this.http.put<any>(this.URL + '/' + id, data)
   }
 
-  deletePatient(id) {
+  deletePatient(id):Observable<any> {
     return this.http.delete<any>(this.URL + '/' + id)
+  }
+
+  deleteMultiplePatient(listaTodelete:any):Observable<any>{
+    return this.http.delete(this.URL + '/deleteMultiple', listaTodelete)
   }
 }

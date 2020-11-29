@@ -1,5 +1,5 @@
 
-<ng-template [ngIf]="pacientes" [ngIfElse]="loading">
+<ng-template [ngIf]="pacientes" [ngIfElse]="notPatients">
     <div class="mt-5" >
         <h3>Listado de pacientes</h3>
             <div class="mt-3">
@@ -20,7 +20,7 @@
                  <span>PACIENTES</span>
             </div>
             <div class="m-2">
-                <i class="far fa-trash-alt"></i>
+                <i class="far fa-trash-alt" (click)="DeletePaciente()"></i>
             </div>
            </div>
             <div class="table-responsive w-100 " style="max-width: 800px;">
@@ -92,7 +92,28 @@
 
 </ng-template>
 
-<ng-template #loading>
-
+<ng-template #notPatients>    
+    <ng-template [ngIf]="loading" [ngIfElse]="notPatient">
+        <div class="container">
+            <div class="d-flex justify-content-center fixed-size">
+                <div class="align-self-center text-center">
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <div>
+                        <span>Cargando...</span>
+                    </div>
+               </div>
+            </div>
+    </div>
+    </ng-template>
+    <ng-template #notPatient>
+        <div class="container">
+            <div class="d-flex justify-content-center fixed-size">
+                <div class="align-self-center">
+                    <h1>No hay pacientes</h1>
+                    <i>(Pase buen dia.)</i>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 
 </ng-template>

@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
-import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
 import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { PasswordConfigComponent } from './password-config/password-config.component';
@@ -18,6 +17,7 @@ import { ListadoCitasComponent } from './listado-citas/listado-citas.component';
 import { PacienteService } from './services/paciente.service';
 import { PacienteDetalleComponent } from './paciente-detalle/paciente-detalle.component';
 import { AuthService } from './services/auth.service';
+import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     RegistroComponent,
     HomeComponent,
-    ListadoPacienteComponent,
     PerfilDoctorComponent,
+    ListadoPacienteComponent,
     ConfiguracionComponent,
     PasswordConfigComponent,
     NuevoPacienteComponent,
