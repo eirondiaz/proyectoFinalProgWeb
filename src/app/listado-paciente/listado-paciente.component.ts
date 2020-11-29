@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormGroupName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
 import { PacienteService } from '../services/paciente.service';
@@ -10,7 +11,7 @@ import { PacienteService } from '../services/paciente.service';
 })
 export class ListadoPacienteComponent implements OnInit {
   verZodiaco:boolean = true; 
-
+   
   pacientes: Paciente []  
   @ViewChild('filtro', {static: true}) filtro: ElementRef
   @ViewChild('citaFecha', {static: true}) citaFecha: ElementRef
@@ -23,6 +24,7 @@ export class ListadoPacienteComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPaciente()
   }
+
 
   buscar(){   
     this.filtro.nativeElement.value == "Zodiaco" ? this.getAllPaciente() : this.getAllPacientByDate() 

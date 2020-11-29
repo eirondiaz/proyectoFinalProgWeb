@@ -70,9 +70,8 @@ loadDatosOnFields(){
 
 UpdateDoctor(data:any){
     this._medicoService.updateDoctor(data).subscribe( data => {
-     console.log(data); 
+       this._router.navigate(['/cuenta/perfil']);
    })
-  console.log(data)
 }
 
  

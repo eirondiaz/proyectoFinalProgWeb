@@ -11,15 +11,6 @@
                             <option value="citas">Visitas</option>
                         </select>
                     </div>
-                    <div>
-                        <form class="">
-                            <div class="form-group">
-                                <label>Fecha: </label>
-                                <input #citaFecha type="date" class="ml-2 p-1">
-                                <button (click)="buscar()" class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
-                            </div>
-                        </form>
-                   </div>
                </div>
             </div>
         <div  class="table-responsive w-100  border rounded-lg" style="max-width: 800px;">
@@ -84,7 +75,7 @@
                                             </div>
                                         </div>
                                         <div class="center-center text-gris">
-                                            <h6>{{pacientes.total_visit}}</h6>
+                                            <h6>{{paciente.total_visit}}</h6>
                                         </div>
                                         <div class="center-center ">
                                             <h6 class="h7">{{paciente.cedula}}</h6>
