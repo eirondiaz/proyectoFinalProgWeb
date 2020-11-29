@@ -1,5 +1,71 @@
-<div class="container">
-    <div>
-        
+<ng-template  [ngIf]="paciente" [ngIfElse]="loading">
+    <div class="container p-0 mt-3">
+        <div class="header">
+            <div class="border rounded bg-light-blue p-3 ">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex">
+                           <ng-template [ngIf]="paciente.fo" [ngIfElse]="avatar">
+                                <img src="/assets/img/doctor_avatar.png" alt="Foto de Pergfil" width="100" height="100" class="circle-picture">
+                                <h3 class="ml-3 mt-2">{{paciente.nombre}} {{paciente.apellido}}</h3>
+                           </ng-template>
+                           <ng-template #avatar>
+                               <i class="fas fa-user-circle avatar"></i>
+                                <h3 class="ml-3 mt-2">{{paciente.nombre}} {{paciente.apellido}}</h3>
+                           </ng-template>
+                           
+                        </div>
+                    </div>
+                    <div class="d-flex mt-3 ml-3 justify-content-between">
+                        <div>
+                            <p class="text-primario">Cuenta/PacienteDetalle</p>
+                        </div>
+                        <div>
+                             <button class="mr-3 btn btn-danger" (click)="EliminarPaciente()">Eliminar este paciente</button>
+                             <!--<button class="btn btn-primario">Notificaciones</button>-->
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="main">
+             <div class="d-flex" *ngIf="paciente">
+                <div class="flex-grow-1" *ngIf="paciente">
+                    <div class="card mt-3 ml-2 p-5">
+                        <h5>DATOS DEL PACIENTE</h5>
+                        
+                         <div class="mt-2" *ngIf="paciente">
+                            <b class="mt-2">Correo Electronico</b>
+                            <a class="text-primario">{{paciente != null ? paciente.email: ""}}</a>
+    
+                            <b class="mt-2">Fecha: </b>
+                            <span>{{paciente.fecha_nac != null ? paciente.fecha_nac: "No disponible"}}</span>
+    
+                            <b class="mt-2">Cedula</b>
+                            <span>{{paciente.cedula != null ? paciente.cedula: "No disponible"}}</span>
+    
+                            <b class="mt-2">Alergia</b>
+                            <span>{{paciente.alergia != null ? paciente.alergia: "No disponible"}}</span>
+    
+                            <b class="mt-2">Tipo de sangre</b>
+                            <span>{{paciente.tipo_sangre != null ? paciente.tipo_sangre: "No disponible"}}</span>
+    
+                         </div>
+           
+                    </div>
+                </div>
+             </div>
+        </div>
     </div>
-</div>
+</ng-template>
+
+<ng-template #loading> 
+    <div class="container">
+        <div class="d-flex justify-content-center fixed-size">
+            <div class="align-self-center text-center">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+                <div>
+                    <span>Cargando...</span>
+                </div>
+           </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Paciente } from '../Models/Paciente';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,10 @@ export class PacienteService {
     return this.http.get<any>(this.URL + '/patients?token=' + localStorage.getItem('token'))
   }
 
-  getPatientById(id):Observable<any> {
-    return this.http.get<any>(this.URL + '/' + id)
+  getPatientById(id:any):Observable<any> {
+    return this.http.get<any>(this.URL + '/' +  id + '?token=' + localStorage.getItem('token'))
   }
-
+ 
 
   updatePatient(id, data):Observable<any> {
     return this.http.put<any>(this.URL + '/' + id, data)
