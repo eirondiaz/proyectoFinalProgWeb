@@ -32,15 +32,22 @@
                     <label for="">Nombre:</label>
                     <div class="form-group">
                         <input formControlName="nombre" type="text" placeholder="Nombre del usuario" class="form-control">
-                        <div *ngIf="nombre.invalid"> 
+                        <div *ngIf="nombreControl.invalid"> 
                             <span class="text-danger">*El nombre es requerido*</span>
                         </div>
                     </div>
                     <label>Apellido:</label>
                     <div class="form-group">
-                        <input formControlName="apellido" type="text" placeholder="Nombre del usuario" class="form-control">
-                        <div *ngIf="apellido.invalid"> 
+                        <input formControlName="apellido" type="text" placeholder="Apellido del usuario" class="form-control">
+                        <div *ngIf="apellidoControl.invalid"> 
                             <span class="text-danger">*La apellido es requerida*</span>
+                        </div>
+                    </div>
+                    <label>Correo:</label>
+                    <div class="form-group">
+                        <input formControlName="correo" type="email" placeholder="Correo electronico" class="form-control">
+                        <div *ngIf="correoControl.invalid"> 
+                            <span class="text-danger">*Correo es invalido*</span>
                         </div>
                     </div>
                     <div class="form-group mt-4 text-center">
