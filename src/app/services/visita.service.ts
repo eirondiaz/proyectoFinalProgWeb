@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class VisitaService {
 
   getAllVisitas() {
     return this.http.get<any>(this.URL + '/?token=' + localStorage.getItem('token'))
+  }
+
+  getAllVicitasFecha(date:any): Observable<any> {
+    return this.http.get<any>(this.URL + '/getByDate?token=' + localStorage.getItem('token'), date )
   }
 
   getVisitaById(id) {

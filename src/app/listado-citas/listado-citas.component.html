@@ -3,11 +3,11 @@
         <div class="mt-3">
            <div class="d-flex justify-content-end" style="max-width: 800px;">
                 <div>
-                    <form class="">
+                    <form [formGroup]="fechaGroup" (ngSubmit)="FetchVicitasPorFecha(fechaGroup.value)">
                         <div class="form-group">
                             <label>Fecha: </label>
-                            <input type="date" class="ml-2 p-1">
-                            <button class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
+                            <input type="date" class="ml-2 p-1" formControlName="fecha">
+                            <button type="submit" class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
                         </div>
                     </form>
                </div>
@@ -25,7 +25,7 @@
        </div>
         <div class="table-responsive w-100 " style="max-width: 800px;">
             <table class="w-100">
-                <tbody>
+                <tbody *ngFor="let cita of listaVicitas">
                     <tr class="border-top bg-light-blue">
                         <div>
                             <div class="list-container py-2">
@@ -38,15 +38,15 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="center-center ml-3">
-                                        <h6>Lissa Hansen</h6>
+                                        <h6>{{cita.motivo}}</h6>
                                     </div>
                                     </div>
                                 </div>
                                 <div class="center-center text-gris">
-                                    <h6>Zagitario</h6>
+                                    <h6>{{cita.monto}}</h6>
                                 </div>
                                 <div class="center-center ">
-                                    <h6 class="h7">2020-23023</h6>
+                                    <h6 class="h7">{{cita.no_seguro}}</h6>
                                 </div>
                                 <div class="center-center ">
                                     <i class="fas fa-ellipsis-h"></i>

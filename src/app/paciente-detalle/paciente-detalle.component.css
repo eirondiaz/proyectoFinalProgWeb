@@ -1,0 +1,28 @@
+.circle-picture{
+    border-radius: 50%;
+}
+
+a {
+    display: block;
+}
+
+b{
+    display: block;
+}
+
+.lista-citas{
+    list-style: none;
+}
+
+.lista-citas li {
+    margin-top: 3px;
+    margin-left: 0;
+    color: var(--color-primario);
+}
+
+.avatar{
+    border-radius: 5px;
+    font-size: 38px;
+    color: var(--color-primario);
+    padding: 8px;
+}
