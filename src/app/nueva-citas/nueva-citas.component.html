@@ -15,13 +15,13 @@
                     </div>
                     <label>Fecha: </label>
                     <div class="form-group">
-                        <input formControlName="fecha" type="date" class="form-control">
+                        <input formControlName="fecha" type="datetime-local" class="form-control">
                         <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)"> 
                             <span class="text-danger">*La fecha es requerida*</span>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <button   class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()" >Siguiente</button>
+                        <button [disabled]="!firstFormValidation()" class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()" >Siguiente</button>
                     </div> 
                 </fieldset>
                     <fieldset class="d-none" id="box2">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <button  class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()" >Siguiente</button>
+                        <button [disabled]="!secondFormValidation()" class="btn btn-primario w-75 ml-2 mt-3" (click)="NextBox()" >Siguiente</button>
                     </div>
                 </fieldset>
                   <fieldset class="d-none" id="box3">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                      <div class="form-group mt-3 text-center">
-                        <button  class="btn btn-primario w-100 ml-2 mt-3 mb-2" (click)="NextBox()">Agendar cita</button> <br>
+                        <button [disabled]="!threeFormValidation()" class="btn btn-primario w-100 ml-2 mt-3 mb-2" (click)="NextBox()">Agendar cita</button> <br>
                         <a>Añadir una foto de prueba</a>
                     </div> 
                 </fieldset>
@@ -134,7 +134,7 @@
                                                   <b>Motivo de la consulta </b>
                                               </td>
                                               <td>
-                                                  <span>{{visita.monto}}</span>
+                                                  <span>{{visita.motivo}}</span>
                                               </td>
                                           </tr>
                                           <tr>

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Paciente } from '../Models/Paciente';
 import { Visita } from '../Models/Visita';
 import { PacienteService } from '../services/paciente.service';
-
+import { VisitaService } from './../services/visita.service'
 
 @Component({
   selector: 'app-nueva-citas',
@@ -21,7 +21,8 @@ export class NuevaCitasComponent implements OnInit {
 
   constructor(
     private _builder: FormBuilder,
-    private _pacienteService: PacienteService
+    private _pacienteService: PacienteService,
+    private _VisitaService: VisitaService
   ) { 
     this.getAllPaciente()
   }
@@ -88,7 +89,14 @@ export class NuevaCitasComponent implements OnInit {
   }
 
   saveCita(){    
+    this.visita.id_paciente = this.id_paciente.id
     console.log(this.visita)
+    this._VisitaService.createVisita(this.visita).subscribe(
+      (resp => {
+        console.log("Visita creada exitosamente")
+      }),
+      (error => console.log(error))
+    )
   }
 
   firstFormValidation(){
