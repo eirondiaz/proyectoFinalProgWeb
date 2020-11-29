@@ -11,9 +11,10 @@ import { PacienteService } from '../services/paciente.service';
 })
 export class ListadoPacienteComponent implements OnInit {
   verZodiaco:boolean = true; 
-   
-  pacientes: Paciente []  
-  @ViewChild('filtro', {static: true}) filtro: ElementRef
+  pacientes: Paciente [] ; 
+  deleteList:string[] = [];
+  fehaGroup:FormGroup; 
+
   @ViewChild('citaFecha', {static: true}) citaFecha: ElementRef
 
   constructor(
@@ -25,10 +26,7 @@ export class ListadoPacienteComponent implements OnInit {
     this.getAllPaciente()
   }
 
-
-  buscar(){   
-    this.filtro.nativeElement.value == "Zodiaco" ? this.getAllPaciente() : this.getAllPacientByDate() 
-  }
+ 
 
   getAllPaciente(){
     this._pacienteService.getAllPatients().subscribe(
@@ -91,8 +89,5 @@ export class ListadoPacienteComponent implements OnInit {
       this.router.navigate(['/paciente-detalle'])
   }
 
-  SelectAllBox(){
-     let checkBoxes = document.getElementsByClassName('form-checkbox'); 
-      
-  }
+  
 }
