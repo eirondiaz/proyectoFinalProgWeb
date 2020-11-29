@@ -12,6 +12,7 @@ import { PasswordConfigComponent } from './password-config/password-config.compo
 import { PerfilDoctorComponent } from './perfil-doctor/perfil-doctor.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoggedInGuard} from './guard/logged-in.guard';
+import { CitaDetallesComponent } from './cita-detalles/cita-detalles.component';
 
 const routes: Routes = [{path: '', component: LoginComponent},
                         {path: 'registro', component: RegistroComponent},
@@ -24,7 +25,9 @@ const routes: Routes = [{path: '', component: LoginComponent},
                           {path: 'nuevo-paciente', component: NuevoPacienteComponent,canActivate:[LoggedInGuard]},
                           {path: 'listado-citas', component: ListadoCitasComponent ,canActivate:[LoggedInGuard]},
                           {path: 'nueva-cita', component: NuevaCitasComponent ,canActivate:[LoggedInGuard]},
-                          {path: 'paciente-detalle/:id', component: PacienteDetalleComponent}],canActivate:[LoggedInGuard]}
+                          { path: 'paciente-detalle/:id', component: PacienteDetalleComponent, canActivate: [LoggedInGuard]},
+                          { path: 'cita-detalles/:id', component: CitaDetallesComponent , canActivate: [LoggedInGuard]}], canActivate: [LoggedInGuard]
+                           }
                          ];
 
 @NgModule({

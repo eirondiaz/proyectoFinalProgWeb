@@ -18,6 +18,7 @@ import { PacienteService } from './services/paciente.service';
 import { PacienteDetalleComponent } from './paciente-detalle/paciente-detalle.component';
 import { AuthService } from './services/auth.service';
 import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.component';
+import { CitaDetallesComponent } from './cita-detalles/cita-detalles.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ListadoPacienteComponent } from './listado-paciente/listado-paciente.co
     NuevoPacienteComponent,
     NuevaCitasComponent,
     ListadoCitasComponent,
-    PacienteDetalleComponent
+    PacienteDetalleComponent,
+    CitaDetallesComponent
   ],  
   imports: [
     BrowserModule,

@@ -11,7 +11,8 @@ import { VisitaService } from '../services/visita.service';
 export class ListadoCitasComponent implements OnInit {
   fechaGroup:FormGroup; 
   listaVicitas:Visita[] = [] ; 
-  listaVicitasFiltrada:Visita[] = []; 
+  listaVicitasFiltrada: Visita[];
+  
 
   constructor(
     private _servicoVicitas: VisitaService
@@ -21,21 +22,21 @@ export class ListadoCitasComponent implements OnInit {
     this.fechaGroup = new FormGroup({
       fecha : new FormControl('') 
    })
-
    this.getAllVicitas();
   }
 
 
   getAllVicitas(){
     this._servicoVicitas.getAllVisitas().subscribe( res => {
-        this.listaVicitas = res.data;
+      this.listaVicitas = res.data;
+      this.listaVicitasFiltrada = this.listaVicitas;
     })
  }
  
 
-  FetchVicitasPorFecha(date:any){
-    this.listaVicitasFiltrada= this.listaVicitas.filter(x => x.fecha.substring(0, 10) == date.substring(0, 10))
-    console.log(this.listaVicitasFiltrada)
+ FetchVicitasPorFecha(date: any) {
+  this.listaVicitasFiltrada = this.listaVicitas.filter(x => x.fecha.substring(0, 10) == date.fecha)
+  console.log(this.listaVicitasFiltrada)
   }
 
  

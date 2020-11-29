@@ -25,7 +25,7 @@
        </div>
         <div class="table-responsive w-100 " style="max-width: 800px;">
             <table class="w-100">
-                <tbody *ngFor="let cita of listaVicitas">
+                <tbody *ngFor="let cita of listaVicitasFiltrada">
                     <tr class="border-top bg-light-blue">
                         <div>
                             <div class="list-container py-2">
@@ -38,7 +38,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="center-center ml-3">
-                                        <h6>{{cita.motivo}}</h6>
+                                        <h6><a [<a [routerLink]="[ '/consulta-detalle', cita.id ]">name</a>]>{{cita.motivo}}</a></h6>
                                     </div>
                                     </div>
                                 </div>
