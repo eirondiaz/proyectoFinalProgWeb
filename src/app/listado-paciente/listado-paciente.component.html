@@ -6,23 +6,14 @@
                <div class="d-flex justify-content-between" style="max-width: 800px;">
                     <div class="mt-1">
                         <span>Filtrado por: </span>
-                        <select #filtro name="zodiaco" class="p-1" style="width: 130px;" (change)="VerPorCitas($event)">
+                        <select name="zodiaco" class="p-1" style="width: 130px;" (change)="VerPorCitas($event)">
                             <option value="zodiaco">Zodiaco</option>
                             <option value="citas">Visitas</option>
                         </select>
                     </div>
-                    <div>
-                        <form class="">
-                            <div class="form-group">
-                                <label>Fecha: </label>
-                                <input #citaFecha type="date" class="ml-2 p-1">
-                                <button (click)="buscar()" class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
-                            </div>
-                        </form>
-                   </div>
                </div>
             </div>
-        <div  class="table-responsive w-100  border rounded-lg" style="max-width: 800px;">
+        <div  class="table-responsive w-100 mt-3  border rounded-lg" style="max-width: 800px;">
            <div class="d-flex justify-content-between px-4 ">
             <div class="m-2">
                 <input id="box" (click)="SelectAllBox($event)" type="checkbox" class="mr-3"> 

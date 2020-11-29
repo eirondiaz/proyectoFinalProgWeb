@@ -45,4 +45,5 @@ export class MedicoService {
   updateDoctor(data:any){
     return this.http.put<any>(this.URL + '/update?token=' + localStorage.getItem('token'), data)
   }
+
 }

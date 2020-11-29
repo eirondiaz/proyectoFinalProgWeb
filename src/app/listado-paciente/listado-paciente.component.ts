@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormGroupName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
 import { PacienteService } from '../services/paciente.service';
@@ -9,13 +10,16 @@ import { PacienteService } from '../services/paciente.service';
   styleUrls: ['./listado-paciente.component.css']
 })
 export class ListadoPacienteComponent implements OnInit {
-  verZodiaco: boolean = true;
-
+ 
   pacientes: Paciente[]
   listDelete: any[] = []
+  verZodiaco:boolean = true;   
+  deleteList:string[] = [];
+  fehaGroup:FormGroup; 
+
   @ViewChild('filtro', { static: true }) filtro: ElementRef
   @ViewChild('citaFecha', { static: true }) citaFecha: ElementRef
-
+ 
   constructor(
     private _pacienteService: PacienteService,
     private router: Router

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class PacienteService {
   getPatientById(id) {
     return this.http.get<any>(this.URL + '/' + id)
   }
+
 
   updatePatient(id, data) {
     return this.http.put<any>(this.URL + '/' + id, data)

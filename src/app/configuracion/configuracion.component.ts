@@ -16,7 +16,7 @@ export class ConfiguracionComponent implements OnInit {
   
   nombreControl:FormControl;
   apellidoControl:FormControl; 
-  paisControl:FormControl; 
+  correoControl:FormControl; 
 
   valid: Boolean
   allPais: any [] = []
@@ -38,14 +38,14 @@ export class ConfiguracionComponent implements OnInit {
 async crearCampos(){
   this.nombreControl = new FormControl('', Validators.required);
   this.apellidoControl =  new FormControl('', Validators.required);
-  this.paisControl =  new FormControl('', Validators.required);
+  this.correoControl =  new FormControl('', [Validators.email, Validators.required]);
 }
 
  async createForm(){
      this.myForm = this._builder.group({
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
-      pais : this.paisControl
+      correo : this.correoControl
     })
 
     await this.loadDatos(); 
@@ -63,15 +63,15 @@ async loadDatos(){
 loadDatosOnFields(){
    this.nombreControl.setValue(this.doctor.nombre); 
    this.apellidoControl.setValue(this.doctor.apellido);
+   this.correoControl.setValue(this.doctor.correo); 
    console.log(this.doctor.apellido);
 }
 
 
 UpdateDoctor(data:any){
     this._medicoService.updateDoctor(data).subscribe( data => {
-     console.log(data); 
+       this._router.navigate(['/cuenta/perfil']);
    })
-  console.log(data)
 }
 
  
