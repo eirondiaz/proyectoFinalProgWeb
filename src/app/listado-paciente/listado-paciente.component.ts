@@ -82,47 +82,5 @@ getAllPaciente() {
     }
   }
 
- 
-  selectOneBox = (e, id) => {
-    if (e.target.checked) {      
-      this.listDelete.push(id)
-      console.log("Esta cheado")
-      console.log(this.listDelete)
-    } else {
-      console.log("no esta chekeado")
-      this.listDelete = this.listDelete.filter(x => x != id)
-      console.log(this.listDelete)
-    }
-  }
-
-/*
-  SelectAllBox(e) {
-    let checkBoxes = document.getElementsByClassName('form-checkbox');
-
-    if (e.target.checked) {
-      for (let i = 0; i < checkBoxes.length; i++) {
-        checkBoxes[i].checked = true
-      }
-      this.pacientes.forEach(paciente => {
-        this.listDelete.push(paciente.id)
-      });
-      console.log(this.listDelete)
-    }
-    else {
-      for (let i = 0; i < checkBoxes.length; i++) {
-        checkBoxes[i].checked = false
-      }
-      this.listDelete = []
-      console.log(this.listDelete)
-    }
-  }
-
-*/
-  DeletePaciente(){
-     console.log(this.listDelete)
-     this._pacienteService.deleteMultiplePatient(this.listDelete).subscribe(res => {
-        console.log(res) ; 
-        this.router.navigate(['/cuenta']); 
-     })
-  }
+   
 }

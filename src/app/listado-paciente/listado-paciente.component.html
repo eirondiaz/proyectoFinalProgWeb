@@ -15,12 +15,11 @@
             </div>
         <div  class="table-responsive w-100 mt-3  border rounded-lg" style="max-width: 800px;">
            <div class="d-flex justify-content-between px-4 ">
-            <div class="m-2">
-                <input id="box" (click)="SelectAllBox($event)" type="checkbox" class="mr-3"> 
+            <div class="m-2"> 
                  <span>PACIENTES</span>
             </div>
             <div class="m-2">
-                <i class="far fa-trash-alt" (click)="DeletePaciente()"></i>
+                 <span>Cantida de paciente: {{pacientes.length}}</span>
             </div>
            </div>
             <div class="table-responsive w-100 " style="max-width: 800px;">
@@ -31,7 +30,6 @@
                                 <div>
                                     <div class="list-container py-2">
                                         <div class="center-center">
-                                            <input (click)="selectOneBox($event, paciente.id)" type="checkbox" class="form-checkbox">
                                         </div>
                                         <div>
                                             <div class="d-flex">
@@ -62,7 +60,7 @@
                                 <div>
                                     <div class="list-container py-2">
                                         <div class="center-center">
-                                            <input type="checkbox" class="form-checkbox">
+                                           
                                         </div>
                                         <div>
                                             <div class="d-flex">

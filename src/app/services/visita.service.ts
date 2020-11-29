@@ -19,9 +19,6 @@ export class VisitaService {
     return this.http.get<any>(this.URL + '/?token=' + localStorage.getItem('token'))
   }
 
-  getAllVicitasFecha(date:any): Observable<any> {
-    return this.http.get<any>(this.URL + '/getByDate?token=' + localStorage.getItem('token'), date )
-  }
 
   getVisitaById(id) {
     return this.http.get<any>(this.URL + '/' + id)

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Paciente } from '../Models/Paciente';
 
@@ -34,6 +34,12 @@ export class PacienteService {
   }
 
   deleteMultiplePatient(listaTodelete:any):Observable<any>{
-    return this.http.delete(this.URL + '/deleteMultiple', listaTodelete)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+      
+    return this.http.delete(this.URL + '/deleteMultiple/'  + '?token=' + localStorage.getItem('token'),listaTodelete)
   }
 }
