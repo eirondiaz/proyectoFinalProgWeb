@@ -27,8 +27,7 @@ const routes: Routes = [{path: '', component: LoginComponent},
                           {path: 'nueva-cita', component: NuevaCitasComponent ,canActivate:[LoggedInGuard]},
                           { path: 'paciente-detalle/:id', component: PacienteDetalleComponent, canActivate: [LoggedInGuard]},
                           { path: 'cita-detalles/:id', component: CitaDetallesComponent , canActivate: [LoggedInGuard]}], canActivate: [LoggedInGuard]
-                           }
-                         ];
+                        }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

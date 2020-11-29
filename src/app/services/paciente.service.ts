@@ -33,13 +33,5 @@ export class PacienteService {
     return this.http.delete<any>(this.URL + '/' + id + '?token=' + localStorage.getItem('token'))
   }
 
-  deleteMultiplePatient(listaTodelete:any):Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    }
-      
-    return this.http.delete(this.URL + '/deleteMultiple/'  + '?token=' + localStorage.getItem('token'),listaTodelete)
-  }
+  
 }
