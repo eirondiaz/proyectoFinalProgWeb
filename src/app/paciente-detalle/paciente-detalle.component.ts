@@ -1,6 +1,6 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
 import { PacienteService } from '../services/paciente.service';
 
@@ -15,6 +15,7 @@ export class PacienteDetalleComponent implements OnInit {
   loading:boolean = true; 
   constructor(
     private ruate: ActivatedRoute,
+    private router: Router, 
     private servicePaciente: PacienteService
   ) { }
 
@@ -31,6 +32,15 @@ export class PacienteDetalleComponent implements OnInit {
             this.loading = false; 
         } )
      })
+  }
+
+  
+
+  EliminarPaciente(id:any){
+      this.servicePaciente.deletePatient(id).subscribe(res => {
+          console.log(res);
+          this.router.navigate(['/cuenta']);
+      });
   }
 
 

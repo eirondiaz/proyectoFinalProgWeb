@@ -29,8 +29,8 @@ export class PacienteService {
     return this.http.put<any>(this.URL + '/' + id, data)
   }
 
-  deletePatient(id):Observable<any> {
-    return this.http.delete<any>(this.URL + '/' + id)
+  deletePatient(id:any):Observable<any> {
+    return this.http.delete<any>(this.URL + '/' + id + '?token=' + localStorage.getItem('token'))
   }
 
   deleteMultiplePatient(listaTodelete:any):Observable<any>{
