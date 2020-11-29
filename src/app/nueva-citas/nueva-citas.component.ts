@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Paciente } from '../Models/Paciente';
+import { Visita } from '../Models/Visita';
+import { PacienteService } from '../services/paciente.service';
+import { VisitaService } from './../services/visita.service'
 
 @Component({
   selector: 'app-nueva-citas',
@@ -8,18 +12,56 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NuevaCitasComponent implements OnInit {
   registroPacienteBoxes: string[] = ['box1', 'box2', 'box3', 'box4'];
+  @ViewChild('idPac', {static: true}) idPac: ElementRef
   currentBox = 0;
+  myForm: FormGroup = this.createForm()
+  visita: Visita
+  pacientes: Paciente[]
+  loading:boolean = true; 
 
-  constructor() { }
+  constructor(
+    private _builder: FormBuilder,
+    private _pacienteService: PacienteService,
+    private _VisitaService: VisitaService
+  ) { 
+    this.getAllPaciente()
+  }
 
   ngOnInit(): void {
      
   }
 
+  createForm(): FormGroup{
+    return this._builder.group({
+      id_paciente: [''],
+      fecha: ['', Validators.required],
+      no_seguro: ['', Validators.required],
+      monto: ['', Validators.required],
+      motivo: ['', Validators.required],
+      diagnostico: ['', Validators.required],
+      nota: ['', Validators.required],
+      foto_evidencia: ['', Validators.required]
+    })
+  }
+
+  getAllPaciente() {
+    this._pacienteService.getAllPatients().subscribe(
+      (resp => {
+        this.pacientes = <Paciente[]>resp['data']
+        console.log(this.pacientes);
+        this.loading = false; 
+      }),
+      (error => console.log(error))
+    )
+  }
 
  
+  NextBox() {    
+    this.visita = this.myForm.value
+    if (this.currentBox == 0) {
+     this.visita.id_paciente = this.id_paciente.id
+    }   
 
-  NextBox() { 
     let activeBox = document.getElementById(this.registroPacienteBoxes[this.currentBox]);
     let nextBox = document.getElementById(this.registroPacienteBoxes[this.currentBox + 1]);
 
@@ -44,5 +86,44 @@ export class NuevaCitasComponent implements OnInit {
           preBox.classList.remove('d-none');
           this.currentBox -= 1;
     }
+  }
+
+  saveCita(){    
+    this.visita.id_paciente = this.id_paciente.id
+    console.log(this.visita)
+    this._VisitaService.createVisita(this.visita).subscribe(
+      (resp => {
+        console.log("Visita creada exitosamente")
+      }),
+      (error => console.log(error))
+    )
+  }
+
+  firstFormValidation(){
+    return this.fecha.valid
+  }
+
+  secondFormValidation(){
+    return this.no_seguro.valid && this.monto.valid
+  }
+
+  threeFormValidation(){
+    return this.monto.valid && this.diagnostico.valid && this.nota.valid
+  }
+
+ 
+  get fecha () {return this.myForm.get('fecha')}
+  get no_seguro () {return this.myForm.get('no_seguro')}
+  get monto () {return this.myForm.get('monto')}
+  get motivo () {return this.myForm.get('motivo')}
+  get diagnostico () {return this.myForm.get('diagnostico')}
+  get nota () {return this.myForm.get('nota')}
+  get foto_evidencia () {return this.myForm.get('foto_evidencia')}
+
+   get id_paciente () {    
+    return {
+      id:  this.idPac.nativeElement.value,
+      nombre:  this.idPac.nativeElement.options[this.idPac.nativeElement.selectedIndex].text
+    }  
   }
 }
