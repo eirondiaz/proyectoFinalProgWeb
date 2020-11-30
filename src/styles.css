@@ -3,11 +3,11 @@
 
 
 :root{
-     --color-primario: #004B93;
-     --color-secundario: #9599A8;
+     --color-primario: #00C1CD;
+     --color-secundario: #fafafa;
      --color-terciario: #7796BD;
 
-     --color-primario-dark: #222942;
+     --color-primario-dark: #21b1bb;
      --color-hover: #108EEC;
      
 }

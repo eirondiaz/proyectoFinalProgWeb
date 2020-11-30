@@ -29,6 +29,6 @@ export class VisitaService {
   }
 
   deleteVisita(id:any):Observable<any> {
-    return this.http.delete(this.URL + '/consulta/' + id + '?token=' + localStorage.getItem('token'))
+    return this.http.delete(this.URL + '/' + id + '?token=' + localStorage.getItem('token'))
   }
 }

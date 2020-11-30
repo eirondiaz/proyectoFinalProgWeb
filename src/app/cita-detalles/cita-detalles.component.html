@@ -1,9 +1,8 @@
-<ng-template [ngIf]="fechaControl.value" [ngIfElse]="loading">
+<ng-template [ngIf]="cita" [ngIfElse]="loading">
     <div class="container-fluid my-2">
-        <div class="d-flex justify-content-around  align-items-center">
-             <div class="card p-3 ">
-                   <h6>INFORMACION DE LA CONSULTA</h6>
-                    <form [formGroup]="citaFormulario">
+        <div class="d-flex justify-content-center align-items-center">
+             <div class="p-3">
+                    <!--<form [formGroup]="citaFormulario">
                         <div class="form-group">
                             <span>Motivo de la cita:</span>
                             <input type="text" placeholder="Motivo cita" class="form-control" formControlName="motivo" >
@@ -32,7 +31,37 @@
                             <button class="btn btn-danger" (click)="EliminarCita()">Eliminar</button>
                             <button class="btn btn-primario ml-2"  (click)="GuardarCambios()">Guardar cambios</button>
                         </div>
-                    </form>
+                    </form>-->
+
+                   <div class="p-4">
+                    <h2>Informacion de la Cita</h2>
+
+                    <div>
+                        <b>Motivo:</b>
+                        <p>{{cita.motivo}}</p>
+                    </div>
+                    <div>
+                       <b>Fecha:</b>
+                       <p>{{cita.fecha}}</p>
+                   </div>
+                   <div>
+                       <b>No. serguro:</b>
+                       <p>{{cita.no_seguro}}</p>
+                   </div>
+                   <div>
+                       <b>Monto:</b>
+                       <p>{{cita.monto}}</p>
+                   </div>
+                   <div>
+                       <b>Diagnostico:</b>
+                       <p>{{cita.diagnostico}}</p>
+                   </div>
+                   <div>
+                       <b>Nota:</b>
+                       <p>{{cita.nota}}</p>
+                   </div>
+                   </div>
+                   <button class="btn btn-danger w-75" (click)="EliminarCita()">Eliminar</button>
                 </div>
                <div class="text-center">
                       <a class="text-primario" (click)="ShowFoto()">Ver imagen de evidencia.</a>
@@ -57,13 +86,13 @@
     <div class="d-flex justify-content-center w-100 fixed-size align-items-center">
         <ng-template [ngIf]="foto" [ngIfElse]="nofoto">
             <div class="text-center position-relative">
-                <i class="fas fa-times close"  (click)="CloseMenu()"></i>
-                <img [src]="foto" alt="Foto evidencia" width="90%" class="img-fluid">
-                <input type="file" class="form-control">
+                <i class="fas fa-times close" (click)="CloseMenu()"></i>
+                <img [src]="foto" alt="Foto evidencia" width="100%" class="img-fluid">
             </div>
         </ng-template>
         <ng-template #nofoto>
             <div class="card p-4">
+                <i class="fas fa-times close" (click)="CloseMenu()"></i>
                 <h3>No hay foto de evidencia</h3>
                 <i>Preguntele a su medico.</i>
             </div>

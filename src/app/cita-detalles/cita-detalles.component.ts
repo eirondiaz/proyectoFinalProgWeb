@@ -10,76 +10,92 @@ import { VisitaService } from '../services/visita.service';
 })
 export class CitaDetallesComponent implements OnInit {
  
-  idCita:string; 
-  citaFormulario:FormGroup; 
-  motivoControl:FormControl; 
-  fechaControl: FormControl;
-  numeroSeguroControl:FormControl;
-  diagnosticoControl: FormControl;
-  notaControl:FormControl;
-  montoControl:FormControl; 
+  cita:any; 
+  // citaFormulario:FormGroup; 
+  // motivoControl:FormControl; 
+  // fechaControl: FormControl;
+  // numeroSeguroControl:FormControl;
+  // diagnosticoControl: FormControl;
+  // notaControl:FormControl;
+  // montoControl:FormControl; 
   foto:string ; 
 
   constructor(
-     private route: ActivatedRoute,
-     private router: Router, 
-     private servicioCita: VisitaService,
-     private formBuilder: FormBuilder 
+      private route: ActivatedRoute,
+      private router: Router, 
+      private servicioCita: VisitaService,
+    //  private formBuilder: FormBuilder 
   ) { }
 
   ngOnInit(): void {
-      this.motivoControl = new FormControl('', [Validators.required]);
-      this.fechaControl = new FormControl('', [Validators.required]);
-      this.numeroSeguroControl = new FormControl('', [Validators.required]);
-      this.diagnosticoControl = new FormControl('', [Validators.required]);
-      this.notaControl = new FormControl('', [Validators.required]);
-      this.montoControl = new FormControl('', [Validators.required]);
+      // this.motivoControl = new FormControl('', [Validators.required]);
+      // this.fechaControl = new FormControl('', [Validators.required]);
+      // this.numeroSeguroControl = new FormControl('', [Validators.required]);
+      // this.diagnosticoControl = new FormControl('', [Validators.required]);
+      // this.notaControl = new FormControl('', [Validators.required]);
+      // this.montoControl = new FormControl('', [Validators.required]);
       
-       this.createForm(); 
+      //  this.createForm(); 
+
+      this.GetCita();
   }
 
 
-   createForm(){
-       this.citaFormulario = this.formBuilder.group({
-         motivo : this.motivoControl,
-         no_seguro: this.numeroSeguroControl,
-         diagnostico : this.numeroSeguroControl,
-         fecha : this.fechaControl,
-         nota : this.notaControl,
-         monto : this.montoControl,
-         foto_evidencia : this.foto
-       })
+  //  createForm(){
+  //      this.citaFormulario = this.formBuilder.group({
+  //        motivo : this.motivoControl,
+  //        no_seguro: this.numeroSeguroControl,
+  //        diagnostico : this.numeroSeguroControl,
+  //        fecha : this.fechaControl,
+  //        nota : this.notaControl,
+  //        monto : this.montoControl,
+  //        foto_evidencia : this.foto
+  //      })
 
-       this.LoadDatosToInputs(); 
-   }
+  //      this.LoadDatosToInputs(); 
+  //  }
 
 
-  LoadDatosToInputs(){
-      this.route.paramMap.subscribe( res =>   {
-            this.servicioCita.getVisitaById(res.get('id')).subscribe( cita => {
-              this.idCita = cita.data[0].id; 
-               this.montoControl.setValue(cita.data[0].monto) ; 
-               this.motivoControl.setValue(cita.data[0].motivo) ;
-               this.fechaControl.setValue(cita.data[0].fecha) ;
-               this.notaControl.setValue(cita.data[0].nota);
-               this.diagnosticoControl.setValue(cita.data[0].diagnostico);
-               this.numeroSeguroControl.setValue(cita.data[0].no_seguro);
-               this.foto = cita.data[0].foto_evidencia; 
-               console.log(cita)
-            })
-      })
-  }
+  // LoadDatosToInputs(){
+  //     this.route.paramMap.subscribe( res =>   {
+  //           this.servicioCita.getVisitaById(res.get('id')).subscribe( cita => {
+  //             this.idCita = cita.data[0].id; 
+  //              this.montoControl.setValue(cita.data[0].monto) ; 
+  //              this.motivoControl.setValue(cita.data[0].motivo) ;
+  //              this.fechaControl.setValue(cita.data[0].fecha) ;
+  //              this.notaControl.setValue(cita.data[0].nota);
+  //              this.diagnosticoControl.setValue(cita.data[0].diagnostico);
+  //              this.numeroSeguroControl.setValue(cita.data[0].no_seguro);
+  //              this.foto = cita.data[0].foto_evidencia; 
+  //              console.log(cita)
+  //           })
+  //     })
+  // }
+
+
+  GetCita(){
+        this.route.paramMap.subscribe( res =>   {
+              this.servicioCita.getVisitaById(res.get('id')).subscribe( cita => {
+                 this.cita = cita.data[0]; 
+                 console.log(cita)
+              })
+        })
+    }
+
+
+
+
+
+
 
   EliminarCita(){
-    console.log(this.idCita)
-     this.servicioCita.deleteVisita(this.idCita).subscribe( res => {
+    console.log(this.cita.id)
+     this.servicioCita.deleteVisita(this.cita.id).subscribe( res => {
        this.router.navigate(['/cuenta/listado-citas']); 
      })
   }
 
-  GuardarCambios(data:any){
-
-  }
+ 
 
   ShowFoto(){
     let foto = document.getElementById("foto");
@@ -89,9 +105,5 @@ export class CitaDetallesComponent implements OnInit {
   CloseMenu(){
     let foto = document.getElementById("foto");
     foto.classList.add("d-none"); 
-  }
-
-  ChangeFoto(e:any){
-     this.foto = e.target.value ; 
   }
 }
