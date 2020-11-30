@@ -11,7 +11,7 @@ import { VisitaService } from './../services/visita.service'
   styleUrls: ['./nueva-citas.component.css']
 })
 export class NuevaCitasComponent implements OnInit {
-  registroPacienteBoxes: string[] = ['box1', 'box2', 'box3', 'box4'];
+  registroPacienteBoxes: string[] = ['box1', 'box2', 'box3', 'box4', 'box5'];
   @ViewChild('idPac', {static: true}) idPac: ElementRef
   currentBox = 0;
   myForm: FormGroup = this.createForm()
@@ -111,7 +111,27 @@ export class NuevaCitasComponent implements OnInit {
     return this.monto.valid && this.diagnostico.valid && this.nota.valid
   }
 
- 
+  LoadImg(){
+    let file = document.getElementById('fileImg');
+    file.click();
+  }
+
+  saveFoto(e) {
+    let fileSelect = e.target.files
+    let file;
+    if(fileSelect.length > 0){
+        file = fileSelect[0]
+        let fileReader = new FileReader()
+
+        fileReader.onload = (FileLoadevent) => {
+            let srcData = FileLoadevent.target.result  
+            this.visita.foto_evidencia = <string> srcData    
+        }
+        fileReader.readAsDataURL(file)
+    }
+    this.NextBox();
+  }
+
   get fecha () {return this.myForm.get('fecha')}
   get no_seguro () {return this.myForm.get('no_seguro')}
   get monto () {return this.myForm.get('monto')}
@@ -119,8 +139,7 @@ export class NuevaCitasComponent implements OnInit {
   get diagnostico () {return this.myForm.get('diagnostico')}
   get nota () {return this.myForm.get('nota')}
   get foto_evidencia () {return this.myForm.get('foto_evidencia')}
-
-   get id_paciente () {    
+  get id_paciente () {    
     return {
       id:  this.idPac.nativeElement.value,
       nombre:  this.idPac.nativeElement.options[this.idPac.nativeElement.selectedIndex].text

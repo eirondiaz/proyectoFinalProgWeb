@@ -9,7 +9,7 @@
 
                     <label>Paciente: </label>
                     <div class="form-group mr-2">
-                         <select #idPac class="form-control">                           
+                         <select #idPac class="form-control">                        
                             <option *ngFor="let paciente of pacientes" value="{{paciente.id}}">{{paciente.nombre}}</option>                                                                                    
                          </select>                      
                     </div>
@@ -68,11 +68,24 @@
                         </div>
                     </div>
                      <div class="form-group mt-3 text-center">
-                        <button [disabled]="!threeFormValidation()" class="btn btn-primario w-100 ml-2 mt-3 mb-2" (click)="NextBox()">Agendar cita</button> <br>
-                        <a>Añadir una foto de prueba</a>
+                        <button [disabled]="!threeFormValidation()" class="btn btn-primario w-100 ml-2 mt-3 mb-2" (click)="NextBox()">Siguiente</button> <br>                       
                     </div> 
-                </fieldset>
-                <fieldset id="box4" class="d-none">
+                </fieldset>                
+                <!--Cargar la imagen al local storage como base 64-->
+                <div class="load-img-container d-none shadow-lg" id="box4">
+                    <div class="d-flex justify-content-center w-100" style="height: 500px;">
+                        <div class="upload-img align-self-center">
+                        <div>
+                            <div class="my-2">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <button class="btn btn-primario" (click)="LoadImg()">Subir una foto</button>
+                            <input id="fileImg" type="file" (change)="saveFoto($event)" class="d-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+                <fieldset id="box5" class="d-none">
                     <h3>Finalizar el registro</h3>
                     <div class="d-flex fixed-size">
                        <div *ngIf="visita">
@@ -96,10 +109,10 @@
                                             </tr>
                                             <tr>
                                               <td>
-                                                  <b>Fecha de nacimiento: </b>
+                                                  <b>Fecha de la cita: </b>
                                               </td>
                                               <td>
-                                                  <span>{{visita.fecha}}</span>
+                                                  <span>{{visita.fecha | date}}</span>
                                               </td>
                                           </tr>
                                             
