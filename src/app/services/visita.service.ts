@@ -20,7 +20,7 @@ export class VisitaService {
   }
 
 
-  getVisitaById(id:any) {
+  getVisitaById(id:any):Observable<any> {
     return this.http.get<any>(this.URL + '/' + id + '?token=' + localStorage.getItem('token'))
   }
 
@@ -28,7 +28,7 @@ export class VisitaService {
     return this.http.get<any>(this.URL + '/' + id, data)
   }
 
-  deleteVisita(id) {
-    return this.http.get<any>(this.URL + '/' + id)
+  deleteVisita(id:any):Observable<any> {
+    return this.http.delete(this.URL + '/consulta/' + id + '?token=' + localStorage.getItem('token'))
   }
 }

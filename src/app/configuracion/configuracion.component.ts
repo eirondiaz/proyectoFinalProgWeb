@@ -98,7 +98,9 @@ UpdateDoctor(data:any){
 
   SendToDb(src:any){
       this._medicoService.updateFoto({foto : src}).subscribe(data => {
-          console.log(data)
+         //this._router.navigate(['/cuenta/configuracion'])
+         this.doctor.foto = src  ;
+         console.log(data);
       })
   }
 }
