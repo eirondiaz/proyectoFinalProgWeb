@@ -53,8 +53,7 @@ export class NuevoPacienteComponent implements OnInit {
     this.paciente.sexo = this.getSexo()
     this.paciente.tipo_sangre = this.getSangre()
     this.paciente.alergias = this.getAlergias()
-    console.log(this.paciente)    
-
+ 
     let activeBox = document.getElementById(this.registroPacienteBoxes[this.currentBox]);
     let nextBox = document.getElementById(this.registroPacienteBoxes[this.currentBox + 1]);
 
@@ -87,8 +86,6 @@ export class NuevoPacienteComponent implements OnInit {
   }
 
   saveFoto(e) {
-    console.log(e.target.value)
-
     let fileSelect = e.target.files
     let file;
     if(fileSelect.length > 0){
@@ -126,8 +123,7 @@ export class NuevoPacienteComponent implements OnInit {
 
   createPatient(){
     this.paciente.foto = localStorage.getItem('imagen')
-    console.log(this.paciente)
-
+ 
     this._pacienteService.createPatient(this.paciente).subscribe(
       (resp => {
         console.log("Paciente guardado exitosamente")

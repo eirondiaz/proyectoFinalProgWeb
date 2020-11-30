@@ -51,8 +51,8 @@
                     <div class="card mt-3 ml-2 p-5">
                         <h5 class="ml-2">CITAS PENDIENTES PARA HOY ({{medico.fecha_hoy | date }})</h5>
     
-                        <ul class="lista-citas p-2" *ngFor="let item of medico.consulta">
-                            <li>(10:00am)</li>
+                        <ul class="lista-citas p-0 m-0" *ngFor="let item of medico.consults">
+                            <li class="p-0 m-0" [routerLink]="['/cuenta/cita-detalles', item.id]">{{item.motivo}} ({{item.fecha | date:'shortTime'}})</li>
                         </ul>         
                 </div>
                 </div>

@@ -77,7 +77,6 @@ export class CitaDetallesComponent implements OnInit {
         this.route.paramMap.subscribe( res =>   {
               this.servicioCita.getVisitaById(res.get('id')).subscribe( cita => {
                  this.cita = cita.data[0]; 
-                 console.log(cita)
               })
         })
     }

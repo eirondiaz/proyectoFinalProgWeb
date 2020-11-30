@@ -28,9 +28,6 @@ export class LoginComponent implements OnInit {
 
   logIn(){
     this.valid = true
-    console.log(this.myForm.value)
-    console.log("Es el log-in")
-
     if(!this.myForm.valid) return
 
     this._authService.login(this.myForm.value).subscribe(
@@ -41,9 +38,10 @@ export class LoginComponent implements OnInit {
         }        
       }),
       (error =>{
-        console.log(error)
         if(error.status == 400 && error['error']['detail'] == "user or email mot found"){         
           this.error = "*Usuario o contraseña incorrectos*"
+        } else {
+           alert("Ha ocurrido un error, vuelva mas tarde.");
         }
       })
     )

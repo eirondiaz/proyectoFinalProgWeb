@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, Form } from '@angular/forms'
 import { MedicoService } from './../services/medico.service'
 import { Router } from '@angular/router'
-import { DomSanitizer } from '@angular/platform-browser';
 import { Medico } from '../Models/Medico';
 
 @Component({
@@ -55,7 +54,6 @@ async loadDatos(){
     this._medicoService.getMedico().subscribe(medico => {
       this.doctor = medico.data ;
       this.loadDatosOnFields();     
-      console.log(this.doctor)
     })
 }
 
@@ -64,7 +62,6 @@ loadDatosOnFields(){
    this.nombreControl.setValue(this.doctor.nombre); 
    this.apellidoControl.setValue(this.doctor.apellido);
    this.correoControl.setValue(this.doctor.correo); 
-   console.log(this.doctor.apellido);
 }
 
 
@@ -100,7 +97,6 @@ UpdateDoctor(data:any){
       this._medicoService.updateFoto({foto : src}).subscribe(data => {
          //this._router.navigate(['/cuenta/configuracion'])
          this.doctor.foto = src  ;
-         console.log(data);
       })
   }
 }

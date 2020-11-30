@@ -36,7 +36,6 @@ getAllPaciente() {
     this._pacienteService.getAllPatients().subscribe(
       (resp => {
         this.pacientes = <Paciente[]>resp['data']
-        console.log(this.pacientes);
         this.loading = false; 
       }),
       (error => console.log(error))

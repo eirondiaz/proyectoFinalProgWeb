@@ -36,8 +36,5 @@ export class ListadoCitasComponent implements OnInit {
 
  FetchVicitasPorFecha(e:any) {
   this.listaVicitasFiltrada = this.listaVicitas.filter(x => x.fecha.substring(0, 10) == e.target.value)
-  console.log(this.listaVicitasFiltrada)
   }
-
- 
 }

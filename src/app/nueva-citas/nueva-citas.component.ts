@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Paciente } from '../Models/Paciente';
 import { Visita } from '../Models/Visita';
 import { PacienteService } from '../services/paciente.service';
@@ -17,12 +18,12 @@ export class NuevaCitasComponent implements OnInit {
   myForm: FormGroup = this.createForm()
   visita: Visita
   pacientes: Paciente[]
-  loading:boolean = true; 
 
   constructor(
     private _builder: FormBuilder,
     private _pacienteService: PacienteService,
-    private _VisitaService: VisitaService
+    private _VisitaService: VisitaService,
+    private router: Router 
   ) { 
     this.getAllPaciente()
   }
@@ -48,8 +49,6 @@ export class NuevaCitasComponent implements OnInit {
     this._pacienteService.getAllPatients().subscribe(
       (resp => {
         this.pacientes = <Paciente[]>resp['data']
-        console.log(this.pacientes);
-        this.loading = false; 
       }),
       (error => console.log(error))
     )
@@ -93,7 +92,7 @@ export class NuevaCitasComponent implements OnInit {
     console.log(this.visita)
     this._VisitaService.createVisita(this.visita).subscribe(
       (resp => {
-        console.log("Visita creada exitosamente")
+         this.router.navigate(['/cuenta/listado-citas']);
       }),
       (error => console.log(error))
     )
