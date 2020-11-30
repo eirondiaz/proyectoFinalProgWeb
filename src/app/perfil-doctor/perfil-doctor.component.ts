@@ -9,7 +9,7 @@ import { MedicoService } from './../services/medico.service'
 })
 export class PerfilDoctorComponent implements OnInit {
 
-  medico: Medico = null
+  medico: any = null
 
   constructor(
     private _medicoService: MedicoService
@@ -23,7 +23,7 @@ export class PerfilDoctorComponent implements OnInit {
   getMedico() {
     this._medicoService.getCurrentDoctorWithClossestConsults().subscribe(
       (resp => {
-        this.medico = <Medico>resp.data
+        this.medico = <any>resp.data
         console.log(resp.data)
       }
       ),
