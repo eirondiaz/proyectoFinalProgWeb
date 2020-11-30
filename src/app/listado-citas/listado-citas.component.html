@@ -1,16 +1,13 @@
 <ng-template [ngIf]="listaVicitasFiltrada" [ngIfElse]="loading">
     <div class="mt-5">
-        <h3>Litado de citas</h3>
+        <h3>Listado de citas</h3>
             <div class="mt-3">
                <div class="d-flex justify-content-end" style="max-width: 800px;">
                     <div>
-                        <form [formGroup]="fechaGroup" (ngSubmit)="FetchVicitasPorFecha(fechaGroup.value)">
-                            <div class="form-group">
-                                <label>Fecha: </label>
-                                <input type="date" class="ml-2 p-1" formControlName="fecha">
-                                <button type="submit" class="btn btn-primario text-center text-white ml-2 mb-1">Buscar</button>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <!-- <label>Fecha: </label> -->
+                            <input type="date" class="ml-2 p-1 form-control" (change)="FetchVicitasPorFecha($event)">
+                        </div>
                    </div>
                </div>
             </div>
