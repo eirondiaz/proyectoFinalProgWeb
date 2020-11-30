@@ -16,7 +16,7 @@ import { CitaDetallesComponent } from './cita-detalles/cita-detalles.component';
 
 const routes: Routes = [{path: '', component: LoginComponent},
                         {path: 'registro', component: RegistroComponent},
-                        {path: 'cuenta', component: HomeComponent,
+                        {path: 'cuenta', component: HomeComponent,  canActivate: [LoggedInGuard],
                         children: [
                           {path: '', component: ListadoPacienteComponent,canActivate:[LoggedInGuard]},
                           {path : 'perfil' , component : PerfilDoctorComponent,canActivate:[LoggedInGuard]},
@@ -26,8 +26,9 @@ const routes: Routes = [{path: '', component: LoginComponent},
                           {path: 'listado-citas', component: ListadoCitasComponent ,canActivate:[LoggedInGuard]},
                           {path: 'nueva-cita', component: NuevaCitasComponent ,canActivate:[LoggedInGuard]},
                           { path: 'paciente-detalle/:id', component: PacienteDetalleComponent, canActivate: [LoggedInGuard]},
-                          { path: 'cita-detalles/:id', component: CitaDetallesComponent , canActivate: [LoggedInGuard]}], canActivate: [LoggedInGuard]
-                        }];
+                          { path: 'cita-detalles/:id', component: CitaDetallesComponent , canActivate: [LoggedInGuard]}
+                        ]
+                      }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Visita } from '../Models/Visita';
 import { VisitaService } from '../services/visita.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { VisitaService } from '../services/visita.service';
 })
 export class CitaDetallesComponent implements OnInit {
 
-  cita:Visita; 
+  cita:any; 
   constructor(
      private route: ActivatedRoute,
      private servicioCita: VisitaService
@@ -24,7 +23,7 @@ export class CitaDetallesComponent implements OnInit {
       this.route.paramMap.subscribe( res =>   {
             this.servicioCita.getVisitaById(res.get('id')).subscribe( cita => {
               console.log(cita.data); 
-              this.cita = cita.data; 
+              this.cita = cita.data[0]; 
             })
       })
   }

@@ -7,7 +7,7 @@
                <div class="menu-box">
                 <div class="avatar-perfil text-center p-3 mt-4">
                     <div class="d-flex flex-row" *ngIf="medico">
-                        <ng-template [ngIf]="medico.fot" [ngIfElse]="avatar">
+                        <ng-template [ngIf]="medico.foto" [ngIfElse]="avatar">
                             <img [src]="medico.foto" width="30" height="30" alt="Avatar" class="avatar">
                         </ng-template>
                         <ng-template #avatar>
